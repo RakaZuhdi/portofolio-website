@@ -118,7 +118,7 @@ const Hero = () => {
                     lineHeight: 1.3,
                   }}
                 >
-                  Building digital experiences that inspire.
+                    🚀 Crafting digital experiences that matters!
                 </Typography>
               </motion.div>
 
@@ -134,9 +134,7 @@ const Hero = () => {
                     opacity: 0.9
                   }}
                 >
-                  I'm a Full Stack Developer specializing in crafting exceptional digital experiences. 
-                  Currently focused on building accessible, human-centered applications that solve real-world problems.
-                </Typography>
+                    Full Stack Developer passionate about building human-centered, accessible, and impactful applications. Let’s make tech more intuitive and fun! ✨                </Typography>
               </motion.div>
 
               <Box
