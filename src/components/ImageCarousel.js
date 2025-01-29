@@ -1,161 +1,184 @@
 import React, { useState } from 'react';
-import { Box, MobileStepper, Button, IconButton } from '@mui/material';
+import { Box, IconButton, Modal } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import ZoomInIcon from '@mui/icons-material/ZoomIn';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import CloseIcon from '@mui/icons-material/Close';
+import ZoomInIcon from '@mui/icons-material/ZoomIn';
+import useThemeColors from '../hooks/useThemeColors';
 
 const ImageCarousel = ({ images }) => {
-  const [activeStep, setActiveStep] = useState(0);
-  const [isZoomed, setIsZoomed] = useState(false);
-  const maxSteps = images.length;
+  const colors = useThemeColors();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  const handleNext = (e) => {
+    e.stopPropagation();
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
-  const toggleZoom = () => {
-    setIsZoomed(!isZoomed);
+  const handleZoom = (e) => {
+    e.stopPropagation();
+    setIsModalOpen(true);
+  };
+
+  const variants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
   };
 
   return (
-    <Box sx={{ position: 'relative', width: '100%', mb: 2 }}>
+    <>
       <Box
         sx={{
           position: 'relative',
           width: '100%',
-          height: '250px',
-          borderRadius: '8px',
+          height: '300px',
+          borderRadius: 2,
           overflow: 'hidden',
-          backgroundColor: '#1a1a1a',
-          border: '1px solid rgba(100,255,218,0.1)',
+          backgroundColor: colors.backgroundElevated,
+          border: `1px solid ${colors.borderPrimary}`,
+          mb: 3,
         }}
       >
-        <AnimatePresence mode="wait">
+        <AnimatePresence initial={false} custom={currentIndex}>
           <motion.img
-            key={activeStep}
-            src={images[activeStep]}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            key={currentIndex}
+            src={images[currentIndex]}
+            custom={currentIndex}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 }
+            }}
             style={{
+              position: 'absolute',
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              cursor: 'pointer',
             }}
-            onClick={toggleZoom}
           />
         </AnimatePresence>
+
+        {images.length > 1 && (
+          <>
+            <IconButton
+              onClick={handlePrev}
+              sx={{
+                position: 'absolute',
+                left: 8,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                backgroundColor: `${colors.backgroundPrimary}dd`,
+                backdropFilter: 'blur(4px)',
+                '&:hover': {
+                  backgroundColor: colors.backgroundPrimary,
+                },
+              }}
+            >
+              <ChevronLeftIcon sx={{ color: colors.textPrimary }} />
+            </IconButton>
+            <IconButton
+              onClick={handleNext}
+              sx={{
+                position: 'absolute',
+                right: 8,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                backgroundColor: `${colors.backgroundPrimary}dd`,
+                backdropFilter: 'blur(4px)',
+                '&:hover': {
+                  backgroundColor: colors.backgroundPrimary,
+                },
+              }}
+            >
+              <ChevronRightIcon sx={{ color: colors.textPrimary }} />
+            </IconButton>
+          </>
+        )}
+
         <IconButton
-          onClick={toggleZoom}
+          onClick={handleZoom}
           sx={{
             position: 'absolute',
             right: 8,
             top: 8,
-            color: '#64ffda',
-            backgroundColor: 'rgba(26, 26, 26, 0.7)',
+            backgroundColor: `${colors.backgroundPrimary}dd`,
+            backdropFilter: 'blur(4px)',
             '&:hover': {
-              backgroundColor: 'rgba(26, 26, 26, 0.9)',
+              backgroundColor: colors.backgroundPrimary,
             },
           }}
         >
-          <ZoomInIcon />
+          <ZoomInIcon sx={{ color: colors.textPrimary }} />
         </IconButton>
       </Box>
 
-      <MobileStepper
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
+      <Modal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         sx={{
-          backgroundColor: 'transparent',
-          padding: '8px 0',
-          '& .MuiMobileStepper-dot': {
-            backgroundColor: 'rgba(100,255,218,0.3)',
-          },
-          '& .MuiMobileStepper-dotActive': {
-            backgroundColor: '#64ffda',
-          },
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
-        nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
-            sx={{
-              color: '#64ffda',
-              '&.Mui-disabled': {
-                color: 'rgba(100,255,218,0.3)',
-              },
-            }}
-          >
-            Next
-            <KeyboardArrowRight />
-          </Button>
-        }
-        backButton={
-          <Button
-            size="small"
-            onClick={handleBack}
-            disabled={activeStep === 0}
-            sx={{
-              color: '#64ffda',
-              '&.Mui-disabled': {
-                color: 'rgba(100,255,218,0.3)',
-              },
-            }}
-          >
-            <KeyboardArrowLeft />
-            Back
-          </Button>
-        }
-      />
-
-      {isZoomed && (
+      >
         <Box
           sx={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.9)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1300,
+            position: 'relative',
+            width: '90vw',
+            height: '90vh',
+            backgroundColor: 'transparent',
           }}
-          onClick={toggleZoom}
         >
           <IconButton
-            onClick={toggleZoom}
+            onClick={() => setIsModalOpen(false)}
             sx={{
               position: 'absolute',
               right: 16,
               top: 16,
-              color: '#fff',
+              zIndex: 2,
+              backgroundColor: `${colors.backgroundPrimary}dd`,
+              backdropFilter: 'blur(4px)',
+              '&:hover': {
+                backgroundColor: colors.backgroundPrimary,
+              },
             }}
           >
-            <CloseIcon />
+            <CloseIcon sx={{ color: colors.textPrimary }} />
           </IconButton>
           <img
-            src={images[activeStep]}
+            src={images[currentIndex]}
+            alt="Zoomed view"
             style={{
-              maxWidth: '90%',
-              maxHeight: '90vh',
+              width: '100%',
+              height: '100%',
               objectFit: 'contain',
             }}
           />
         </Box>
-      )}
-    </Box>
+      </Modal>
+    </>
   );
 };
 
