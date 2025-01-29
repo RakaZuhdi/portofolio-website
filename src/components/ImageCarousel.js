@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Box, IconButton, Modal } from '@mui/material';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Box, IconButton, Modal, Typography } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -11,21 +11,33 @@ const ImageCarousel = ({ images }) => {
   const colors = useThemeColors();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const handleNext = (e) => {
-    e.stopPropagation();
+  const handleNext = useCallback((e) => {
+    if (e) e.stopPropagation();
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
+  }, [images.length]);
 
   const handlePrev = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
   const handleZoom = (e) => {
     e.stopPropagation();
     setIsModalOpen(true);
+    setIsPaused(true);
   };
+
+  useEffect(() => {
+    if (!isPaused && images.length > 1) {
+      const timer = setInterval(() => {
+        handleNext();
+      }, 5000); // Change image every 5 seconds
+
+      return () => clearInterval(timer);
+    }
+  }, [handleNext, isPaused, images.length]);
 
   const variants = {
     enter: (direction) => ({
@@ -50,18 +62,19 @@ const ImageCarousel = ({ images }) => {
         sx={{
           position: 'relative',
           width: '100%',
-          height: '300px',
+          height: '400px',
           borderRadius: 2,
           overflow: 'hidden',
           backgroundColor: colors.backgroundElevated,
           border: `1px solid ${colors.borderPrimary}`,
           mb: 3,
         }}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
         <AnimatePresence initial={false} custom={currentIndex}>
-          <motion.img
+          <motion.div
             key={currentIndex}
-            src={images[currentIndex]}
             custom={currentIndex}
             variants={variants}
             initial="enter"
@@ -75,9 +88,51 @@ const ImageCarousel = ({ images }) => {
               position: 'absolute',
               width: '100%',
               height: '100%',
-              objectFit: 'cover',
             }}
-          />
+          >
+            <Box
+              sx={{
+                position: 'relative',
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: colors.backgroundElevated,
+              }}
+            >
+              <img
+                src={images[currentIndex].url}
+                alt={images[currentIndex].description}
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '100%',
+                  objectFit: 'contain',
+                }}
+              />
+              <Box
+                sx={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
+                  padding: '40px 20px 20px',
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#fff',
+                    textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                    fontWeight: 500,
+                  }}
+                >
+                  {images[currentIndex].description}
+                </Typography>
+              </Box>
+            </Box>
+          </motion.div>
         </AnimatePresence>
 
         {images.length > 1 && (
@@ -91,6 +146,7 @@ const ImageCarousel = ({ images }) => {
                 transform: 'translateY(-50%)',
                 backgroundColor: `${colors.backgroundPrimary}dd`,
                 backdropFilter: 'blur(4px)',
+                zIndex: 2,
                 '&:hover': {
                   backgroundColor: colors.backgroundPrimary,
                 },
@@ -107,6 +163,7 @@ const ImageCarousel = ({ images }) => {
                 transform: 'translateY(-50%)',
                 backgroundColor: `${colors.backgroundPrimary}dd`,
                 backdropFilter: 'blur(4px)',
+                zIndex: 2,
                 '&:hover': {
                   backgroundColor: colors.backgroundPrimary,
                 },
@@ -125,6 +182,7 @@ const ImageCarousel = ({ images }) => {
             top: 8,
             backgroundColor: `${colors.backgroundPrimary}dd`,
             backdropFilter: 'blur(4px)',
+            zIndex: 2,
             '&:hover': {
               backgroundColor: colors.backgroundPrimary,
             },
@@ -136,7 +194,10 @@ const ImageCarousel = ({ images }) => {
 
       <Modal
         open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={() => {
+          setIsModalOpen(false);
+          setIsPaused(false);
+        }}
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -152,7 +213,10 @@ const ImageCarousel = ({ images }) => {
           }}
         >
           <IconButton
-            onClick={() => setIsModalOpen(false)}
+            onClick={() => {
+              setIsModalOpen(false);
+              setIsPaused(false);
+            }}
             sx={{
               position: 'absolute',
               right: 16,
@@ -167,15 +231,48 @@ const ImageCarousel = ({ images }) => {
           >
             <CloseIcon sx={{ color: colors.textPrimary }} />
           </IconButton>
-          <img
-            src={images[currentIndex]}
-            alt="Zoomed view"
-            style={{
+          <Box
+            sx={{
+              position: 'relative',
               width: '100%',
               height: '100%',
-              objectFit: 'contain',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: colors.backgroundElevated,
             }}
-          />
+          >
+            <img
+              src={images[currentIndex].url}
+              alt={images[currentIndex].description}
+              style={{
+                maxWidth: '100%',
+                maxHeight: '100%',
+                objectFit: 'contain',
+              }}
+            />
+            <Box
+              sx={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
+                padding: '40px 20px 20px',
+              }}
+            >
+              <Typography
+                variant="body1"
+                sx={{
+                  color: '#fff',
+                  textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                  fontWeight: 500,
+                }}
+              >
+                {images[currentIndex].description}
+              </Typography>
+            </Box>
+          </Box>
         </Box>
       </Modal>
     </>
