@@ -1,219 +1,318 @@
-import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText, useTheme, useMediaQuery, Box } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import React, { useState, useEffect } from 'react';
+import { AppBar, Toolbar, IconButton, Box, useMediaQuery, SwipeableDrawer, List, ListItem, ListItemText, Typography, Button } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import { motion, AnimatePresence } from 'framer-motion';
+import useThemeColors from '../hooks/useThemeColors';
 
 const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const colors = useThemeColors();
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const isMobile = useMediaQuery('(max-width:768px)');
   const location = useLocation();
 
-  const pages = [
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      setScrolled(offset > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Projects', path: '/projects' },
-    { name: 'Contact', path: '/contact' }
+    { name: 'Contact', path: '/contact' },
   ];
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+  const isActive = (path) => {
+    if (path === '/' && location.pathname !== '/') return false;
+    return location.pathname.startsWith(path);
   };
-
-  const isActiveRoute = (path) => {
-    return location.pathname === path;
-  };
-
-  const drawer = (
-    <Box sx={{ 
-      backgroundColor: 'rgba(26, 26, 26, 0.95)',
-      height: '100%',
-      backdropFilter: 'blur(10px)',
-      borderLeft: '1px solid rgba(100, 255, 218, 0.1)'
-    }}>
-      <List sx={{ pt: 2 }}>
-        {pages.map((page) => (
-          <ListItem 
-            button 
-            component={Link} 
-            to={page.path}
-            key={page.name}
-            onClick={handleDrawerToggle}
-            sx={{
-              color: isActiveRoute(page.path) ? '#64ffda' : '#8892b0',
-              my: 1,
-              mx: 2,
-              borderRadius: '12px',
-              background: isActiveRoute(page.path) ? 'rgba(100, 255, 218, 0.1)' : 'transparent',
-              transition: 'all 0.3s ease',
-              position: 'relative',
-              '&:hover': {
-                backgroundColor: 'rgba(100, 255, 218, 0.1)',
-                transform: 'translateX(8px)',
-              },
-              ...(isActiveRoute(page.path) && {
-                '&::after': {
-                  content: '""',
-                  position: 'absolute',
-                  bottom: '-10px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '40%',
-                  height: '4px',
-                  background: 'radial-gradient(circle at center, rgba(100, 255, 218, 0.8) 0%, rgba(100, 255, 218, 0) 70%)',
-                  filter: 'blur(4px)',
-                  animation: 'glow 1.5s ease-in-out infinite alternate',
-                }
-              })
-            }}
-          >
-            <ListItemText 
-              primary={page.name} 
-              primaryTypographyProps={{
-                sx: {
-                  fontSize: '1.1rem',
-                  fontWeight: isActiveRoute(page.path) ? 600 : 400,
-                }
-              }}
-            />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
 
   return (
-    <>
-      <AppBar 
-        position="fixed" 
-        elevation={0}
-        sx={{ 
-          background: 'rgba(26, 26, 26, 0.8)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid rgba(100, 255, 218, 0.1)',
-          '@keyframes glow': {
-            '0%': {
-              filter: 'blur(4px) brightness(1)',
+    <AppBar
+      position="fixed"
+      elevation={scrolled ? 4 : 0}
+      sx={{
+        background: scrolled ? colors.backgroundElevated : 'transparent',
+        backdropFilter: scrolled ? 'blur(10px)' : 'none',
+        transition: 'all 0.3s ease',
+        boxShadow: scrolled ? `0 4px 20px ${colors.shadowPrimary}` : 'none',
+      }}
+    >
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Box
+          component={Link}
+          to="/"
+          sx={{
+            textDecoration: 'none',
+            position: 'relative',
+            fontSize: '2rem',
+            fontWeight: 700,
+            background: `linear-gradient(90deg, ${colors.primary}, ${colors.primaryHover})`,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            visibility: (isMobile && location.pathname === '/') ? 'hidden' : 'visible',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '120%',
+              height: '120%',
+              background: `radial-gradient(circle, ${colors.primaryLight} 0%, transparent 70%)`,
+              opacity: 0.5,
+              filter: 'blur(10px)',
+              animation: 'glow 2s ease-in-out infinite alternate',
             },
-            '100%': {
-              filter: 'blur(4px) brightness(1.5)',
-            }
-          }
-        }}
-      >
-        <Toolbar sx={{ justifyContent: 'space-between', py: 1 }}>
-          <Typography 
-            variant="h6" 
-            component={Link} 
-            to="/"
-            sx={{ 
-              background: 'linear-gradient(90deg, #64ffda, #4db3a4)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              fontWeight: 700,
-              fontSize: '1.5rem',
-              textDecoration: 'none',
-              letterSpacing: '1px',
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                transform: 'scale(1.05)',
-              }
-            }}
-          >
-            MRZ
-          </Typography>
-          {isMobile ? (
+            '@keyframes glow': {
+              '0%': {
+                opacity: 0.3,
+                filter: 'blur(10px)',
+              },
+              '100%': {
+                opacity: 0.7,
+                filter: 'blur(15px)',
+              },
+            },
+          }}
+        >
+          MRZ
+        </Box>
+
+        {isMobile ? (
+          <Box sx={{ ml: 'auto' }}>
             <IconButton
-              aria-label="open drawer"
-              edge="end"
-              onClick={handleDrawerToggle}
-              sx={{ 
-                color: '#64ffda',
-                border: '2px solid rgba(100, 255, 218, 0.2)',
-                borderRadius: '12px',
-                padding: '8px',
-                '&:hover': {
-                  backgroundColor: 'rgba(100, 255, 218, 0.1)',
-                  borderColor: '#64ffda',
-                },
-                transition: 'all 0.3s ease'
-              }}
+              onClick={() => setIsOpen(true)}
+              sx={{ color: colors.textPrimary }}
             >
               <MenuIcon />
             </IconButton>
-          ) : (
-            <Box sx={{ display: 'flex', gap: 1 }}>
-              {pages.map((page) => (
+          </Box>
+        ) : (
+          <Box sx={{ display: 'flex', gap: 4 }}>
+            {navItems.map((item, index) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
                 <Box
-                  key={page.name}
+                  component={Link}
+                  to={item.path}
                   sx={{
+                    color: isActive(item.path) ? colors.primary : colors.textSecondary,
+                    textDecoration: 'none',
                     position: 'relative',
-                    '&::after': isActiveRoute(page.path) ? {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: '-20px',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: '80%',
-                      height: '6px',
-                      background: 'radial-gradient(circle at center, rgba(100, 255, 218, 0.8) 0%, rgba(100, 255, 218, 0) 70%)',
-                      filter: 'blur(4px)',
-                      animation: 'glow 1.5s ease-in-out infinite alternate',
-                    } : {}
+                    padding: '8px 16px',
+                    borderRadius: '4px',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      color: colors.primary,
+                    },
+                    ...(isActive(item.path) && {
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        bottom: '-10px',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: '100%',
+                        height: '30px',
+                        background: `radial-gradient(ellipse at center, ${colors.primary} 0%, transparent 80%)`,
+                        opacity: 0.4,
+                        filter: 'blur(5px)',
+                        animation: 'lampLight 2s ease-in-out infinite alternate',
+                      },
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        bottom: '-10px',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: '80%',
+                        height: '4px',
+                        background: colors.primary,
+                        borderRadius: '4px',
+                        opacity: 0.8,
+                      },
+                      '@keyframes lampLight': {
+                        '0%': {
+                          opacity: 0.4,
+                          filter: 'blur(5px)',
+                        },
+                        '100%': {
+                          opacity: 0.7,
+                          filter: 'blur(8px)',
+                        },
+                      },
+                    }),
                   }}
                 >
-                  <Typography
+                  {item.name}
+                </Box>
+              </motion.div>
+            ))}
+          </Box>
+        )}
+
+        <SwipeableDrawer
+          anchor="right"
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          onOpen={() => setIsOpen(true)}
+          sx={{
+            '& .MuiDrawer-paper': {
+              width: '100%',
+              maxWidth: '300px',
+              background: colors.backgroundSecondary,
+              borderLeft: `1px solid ${colors.borderPrimary}`,
+              display: 'flex',
+              flexDirection: 'column',
+              padding: '20px 0',
+              boxShadow: `-10px 0 30px ${colors.shadowPrimary}`,
+            },
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              px: 3,
+              pb: 2,
+              borderBottom: `1px solid ${colors.borderPrimary}`,
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: '1.5rem',
+                fontWeight: 600,
+                background: `linear-gradient(90deg, ${colors.primary}, ${colors.primaryHover})`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              Menu
+            </Typography>
+            <IconButton
+              onClick={() => setIsOpen(false)}
+              sx={{
+                color: colors.textPrimary,
+                '&:hover': {
+                  backgroundColor: colors.hover,
+                },
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Box>
+
+          <List sx={{ flex: 1, mt: 2 }}>
+            <AnimatePresence>
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <ListItem
                     component={Link}
-                    to={page.path}
+                    to={item.path}
+                    onClick={() => setIsOpen(false)}
                     sx={{
-                      color: isActiveRoute(page.path) ? '#64ffda' : '#8892b0',
-                      textDecoration: 'none',
-                      px: 3,
-                      py: 1,
+                      color: isActive(item.path) ? colors.primary : colors.textSecondary,
+                      position: 'relative',
+                      mx: 2,
+                      my: 1,
                       borderRadius: '12px',
-                      fontSize: '1rem',
-                      fontWeight: isActiveRoute(page.path) ? 600 : 500,
-                      background: isActiveRoute(page.path) ? 'rgba(100, 255, 218, 0.1)' : 'transparent',
                       transition: 'all 0.3s ease',
                       '&:hover': {
-                        color: '#64ffda',
-                        backgroundColor: 'rgba(100, 255, 218, 0.1)',
-                        transform: 'translateY(-2px)',
+                        backgroundColor: colors.backgroundElevated,
+                        transform: 'translateX(8px)',
                       },
+                      ...(isActive(item.path) && {
+                        backgroundColor: colors.backgroundElevated,
+                        '&::before': {
+                          content: '""',
+                          position: 'absolute',
+                          left: '-20px',
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                          width: '4px',
+                          height: '50%',
+                          background: `linear-gradient(to bottom, ${colors.primary}, ${colors.primaryHover})`,
+                          borderRadius: '4px',
+                        },
+                      }),
                     }}
                   >
-                    {page.name}
-                  </Typography>
-                </Box>
+                    <ListItemText 
+                      primary={item.name}
+                      primaryTypographyProps={{
+                        sx: {
+                          fontWeight: isActive(item.path) ? 600 : 400,
+                          fontSize: '1.1rem',
+                        }
+                      }}
+                    />
+                  </ListItem>
+                </motion.div>
               ))}
-            </Box>
-          )}
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="temporary"
-        anchor="right"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true,
-        }}
-        PaperProps={{
-          sx: {
-            width: '240px',
-            backgroundColor: 'transparent',
-          }
-        }}
-        sx={{
-          '& .MuiDrawer-paper': {
-            boxShadow: '-8px 0 32px rgba(0,0,0,0.3)',
-          }
-        }}
-      >
-        {drawer}
-      </Drawer>
-      <Toolbar /> {/* Spacer for fixed AppBar */}
-    </>
+            </AnimatePresence>
+          </List>
+
+          <Box
+            sx={{
+              p: 3,
+              mt: 2,
+              borderTop: `1px solid ${colors.borderPrimary}`,
+              textAlign: 'center',
+            }}
+          >
+            <Typography
+              variant="body2"
+              sx={{
+                color: colors.textSecondary,
+                mb: 2,
+              }}
+            >
+              Let's work together
+            </Typography>
+            <Button
+              component={Link}
+              to="/contact"
+              variant="contained"
+              onClick={() => setIsOpen(false)}
+              sx={{
+                backgroundColor: colors.primary,
+                color: colors.backgroundPrimary,
+                px: 4,
+                py: 1,
+                borderRadius: '8px',
+                textTransform: 'none',
+                fontSize: '1rem',
+                '&:hover': {
+                  backgroundColor: colors.primaryHover,
+                },
+              }}
+            >
+              Contact Me
+            </Button>
+          </Box>
+        </SwipeableDrawer>
+      </Toolbar>
+    </AppBar>
   );
 };
 

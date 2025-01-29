@@ -1,19 +1,19 @@
 import React from 'react';
 import { Box, Typography, Container, Button, Grid } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '@mui/material/styles';
 import SelfPortrait from '../pictures/self-portrait.jpeg';
 import EmptyAvatar from '../pictures/empty-avatar.jpg';
+import useThemeColors from '../hooks/useThemeColors';
 
 const Hero = () => {
-  const theme = useTheme();
+  const colors = useThemeColors();
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.2,
         delayChildren: 0.3,
       },
     },
@@ -25,7 +25,7 @@ const Hero = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.8,
         ease: "easeOut",
       },
     },
@@ -39,11 +39,11 @@ const Hero = () => {
       variants={containerVariants}
       sx={{
         minHeight: '100vh',
-        background: theme.gradients.primary,
-        position: 'relative',
-        overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
+        background: colors.backgroundGradient,
+        position: 'relative',
+        overflow: 'hidden',
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -51,7 +51,7 @@ const Hero = () => {
           height: '60%',
           right: '-20%',
           top: '-20%',
-          background: theme.gradients.glow,
+          background: `radial-gradient(circle, ${colors.glowPrimary} 0%, ${colors.glowSecondary} 70%)`,
           borderRadius: '50%',
           filter: 'blur(80px)',
         },
@@ -62,7 +62,7 @@ const Hero = () => {
           height: '50%',
           left: '-10%',
           bottom: '-10%',
-          background: 'radial-gradient(circle, rgba(100,255,218,0.05) 0%, rgba(100,255,218,0) 70%)',
+          background: `radial-gradient(circle, ${colors.glowPrimary} 0%, ${colors.glowSecondary} 70%)`,
           borderRadius: '50%',
           filter: 'blur(80px)',
         }
@@ -74,13 +74,12 @@ const Hero = () => {
             <Box sx={{ position: 'relative', zIndex: 1 }}>
               <motion.div variants={itemVariants}>
                 <Typography
-                  variant="overline"
                   sx={{
-                    color: theme.palette.primary.main,
-                    letterSpacing: '0.2em',
-                    fontWeight: 500,
+                    color: colors.primary,
                     mb: 2,
-                    display: 'block',
+                    fontWeight: 500,
+                    letterSpacing: '0.1em',
+                    fontSize: { xs: '0.9rem', md: '1rem' },
                   }}
                 >
                   Hi, my name is
@@ -92,10 +91,13 @@ const Hero = () => {
                   variant="h1"
                   component="h1"
                   sx={{
+                    fontWeight: 600,
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.2,
                     fontSize: { xs: '2.5rem', md: '3.5rem' },
-                    fontWeight: 700,
+                    color: colors.textPrimary,
                     mb: 2,
-                    background: theme.gradients.text,
+                    background: `linear-gradient(90deg, ${colors.textPrimary}, ${colors.textSecondary})`,
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}
@@ -108,10 +110,12 @@ const Hero = () => {
                 <Typography
                   variant="h2"
                   sx={{
-                    fontSize: { xs: '1.8rem', md: '2.5rem' },
-                    color: theme.palette.text.secondary,
+                    color: colors.textSecondary,
                     mb: 3,
-                    maxWidth: '540px',
+                    fontSize: { xs: '1.8rem', md: '2.5rem' },
+                    fontWeight: 600,
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.3,
                   }}
                 >
                   Building digital experiences that inspire.
@@ -122,7 +126,7 @@ const Hero = () => {
                 <Typography
                   variant="body1"
                   sx={{
-                    color: theme.palette.text.secondary,
+                    color: colors.textSecondary,
                     mb: 5,
                     maxWidth: '540px',
                     lineHeight: 1.8,
@@ -143,8 +147,8 @@ const Hero = () => {
                 <Button
                   variant="outlined"
                   sx={{
-                    color: theme.palette.primary.main,
-                    borderColor: theme.palette.primary.main,
+                    color: colors.primary,
+                    borderColor: colors.primary,
                     padding: '0.8rem 2rem',
                     borderRadius: '4px',
                     textTransform: 'none',
@@ -152,8 +156,8 @@ const Hero = () => {
                     fontWeight: 500,
                     borderWidth: '1.5px',
                     '&:hover': {
-                      borderColor: theme.palette.primary.main,
-                      backgroundColor: 'rgba(100, 255, 218, 0.1)',
+                      borderColor: colors.primary,
+                      backgroundColor: colors.primaryLight,
                       transform: 'translateY(-2px)',
                     },
                     transition: 'all 0.3s ease'
@@ -164,16 +168,16 @@ const Hero = () => {
                 <Button
                   variant="text"
                   sx={{
-                    color: theme.palette.text.secondary,
+                    color: colors.textSecondary,
                     padding: '0.8rem 2rem',
                     borderRadius: '4px',
                     textTransform: 'none',
                     fontSize: '1rem',
                     fontWeight: 500,
                     '&:hover': {
-                      backgroundColor: 'rgba(136, 146, 176, 0.1)',
+                      backgroundColor: colors.textSecondaryLight,
                       transform: 'translateY(-2px)',
-                      color: theme.palette.primary.main,
+                      color: colors.primary,
                     },
                     transition: 'all 0.3s ease'
                   }}
@@ -201,7 +205,7 @@ const Hero = () => {
                     left: '20px',
                     width: '100%',
                     height: '100%',
-                    border: '2px solid ' + theme.palette.primary.main,
+                    border: '2px solid ' + colors.primary,
                     borderRadius: '4px',
                     zIndex: 0,
                     transition: 'all 0.3s ease-in-out'
@@ -216,7 +220,7 @@ const Hero = () => {
                     left: '40px',
                     width: '100%',
                     height: '100%',
-                    border: '2px solid rgba(100,255,218,0.3)',
+                    border: '2px solid ' + colors.primaryLight,
                     borderRadius: '4px',
                     zIndex: 0,
                     transition: 'all 0.3s ease-in-out'
@@ -240,13 +244,13 @@ const Hero = () => {
                     position: 'relative',
                     zIndex: 1,
                     boxShadow: '0 10px 30px -15px rgba(0,0,0,0.5)',
-                    border: '1px solid rgba(100,255,218,0.2)',
-                    backgroundColor: '#1a1a1a',
+                    border: '1px solid ' + colors.primaryLight,
+                    backgroundColor: colors.backgroundPrimary,
                     '&:hover': {
                       filter: 'grayscale(0%)',
                       transform: 'scale(1.02)',
                       boxShadow: '0 20px 40px -20px rgba(0,0,0,0.7)',
-                      borderColor: 'rgba(100,255,218,0.4)'
+                      borderColor: colors.primary,
                     }
                   }}
                 />
