@@ -38,20 +38,15 @@ A sleek and modern portfolio website built with React, featuring smooth animatio
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/portfolio.git
+git clone https://github.com/RakaZuhdi/portofolio-website.git
 ```
 
-2. Navigate to the project directory:
-```bash
-cd portfolio
-```
-
-3. Install dependencies:
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-4. Start the development server:
+3. Start the development server:
 ```bash
 npm start
 ```
