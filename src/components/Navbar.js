@@ -27,8 +27,8 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Projects', path: '/projects' },
-    { name: 'Hobbies', path: '/hobbies' },
-    { name: 'Contact', path: '/contact' },
+    // { name: 'Hobbies', path: '/hobbies' },
+    // { name: 'Contact', path: '/contact' },
   ];
 
   const isActive = (path) => {

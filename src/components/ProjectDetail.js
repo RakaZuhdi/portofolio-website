@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Box, Container, Typography, Grid, Chip, IconButton, Button } from '@mui/material';
+import { Box, Container, Typography, Grid, Chip, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from '@mui/icons-material/Launch';
@@ -140,7 +140,7 @@ const ProjectDetail = () => {
         justifyContent: 'center',
         background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)'
       }}>
-        <Typography variant="h4" sx={{ color: '#fff' }}>Sorry this project is not yet documented...</Typography>
+        <Typography variant="h4" sx={{ color: '#fff' }}>Sorry this page is still in development...</Typography>
       </Box>
     );
   }

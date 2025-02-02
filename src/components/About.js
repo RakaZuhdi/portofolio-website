@@ -9,6 +9,15 @@ import Komune2 from '../pictures/Komune/Komune_2.jpg'
 import Komune3 from '../pictures/Komune/Komune_3.jpg'
 import Komune4 from '../pictures/Komune/Komune_4.jpeg'
 
+import FH_1 from '../pictures/FH/FH_1.jpeg'
+import FH_2 from '../pictures/FH/FH_2.jpeg'
+import FH_3 from '../pictures/FH/FH_3.jpeg'
+import FH_4 from '../pictures/FH/FH_4.jpeg'
+import FH_5 from '../pictures/FH/FH_5.jpeg'
+import FH_6 from '../pictures/FH/FH_6.JPG'
+import FH_7 from '../pictures/FH/FH_7.jpeg'
+import FH_8 from '../pictures/FH/FH_8.jpeg'
+
 const About = () => {
   const colors = useThemeColors();
 
@@ -52,7 +61,7 @@ const About = () => {
     },
     {
       title: "Research Intern and Bachelor's Thesis",
-      company: 'Fachhochschule Südwestfalen',
+      company: 'Power Systems & Power Economics Laboratory at Fachhochschule Südwestfalen',
       period: "March 2022 - August 2022 (Research Intern), February 2023 - August 2023 (Bachelor's Thesis)",
       description: 'Developed and documented the implementation of the IEC60870-5-104 communication protocol for SCADA systems, focusing on smart grid integration. Designed and implemented key ASDU types, including short measured values and control commands, ensuring efficient real-time data exchange between substations and control centers. Utilized tools such as Node-RED, InfluxDB, and the lib60870-C library to automate data transmission and processing. Enhanced system scalability and automation by integrating JSON-based IEC servers and Docker-based deployment, improving reliability and operational efficiency in power system monitoring and control.',
       achievements: [
@@ -65,30 +74,47 @@ const About = () => {
           'Conducted stress testing and functional validation to ensure the system\'s reliability and responsiveness.'
       ],
       technologies: [
-        'Node-RED', 'InfluxDB', 'C', 'IEC60870-5-104 (IEC104)', 'Docker', 'WINPP104'
+        'Node-RED', 'InfluxDB', 'C', 'IEC60870-5-104 (IEC104)', 'Docker', 'WINPP104', 'MongoDB'
       ],
       images: [
         {
-          url: '/images/about/frontend-developer.jpg',
-          description: 'Building responsive and user-friendly interfaces using modern web technologies.'
+          url: FH_1,
+          description: "Group picture with Professor Dr.-Ing. Egon Ortjohann and his research assistant, Andreas Schmelter, Dipl.-Ing."
         },
         {
-          url: '/images/about/designers.jpg',
-          description: 'Working closely with designers to implement pixel-perfect UI components and animations.'
+          url: FH_2,
+          description: "Last day at the lab."
         },
         {
-          url: '/images/about/responsive-design.jpg',
-          description: 'Ensuring seamless experiences across all devices through responsive design principles.'
+          url: FH_3,
+          description: "Aftermath of final exam for the double degree program."
         },
         {
-          url: '/images/about/responsive-design.jpg',
-          description: 'Ensuring seamless experiences across all devices through responsive design principles.'
-        }
+          url: FH_4,
+          description: "Game night on 2024 new year's eve."
+        },
+        {
+          url: FH_5,
+          description: "Game night on 2024 new year's eve."
+        },
+        {
+          url: FH_6,
+          description: "Game night on 2024 new year's eve."
+        },
+        {
+          url: FH_7,
+          description: "Game night on 2024 new year's eve."
+        },
+        {
+          url: FH_5,
+          description: "Game night on 2024 new year's eve."
+        },
+
       ]
     },
     {
-      title: 'Computer Science Student',
-      company: 'University',
+      title: "Bachelor's of Information Technology (S.Kom.) Student",
+      company: 'Swiss German University',
       period: '2017 - 2021',
       description: 'Studied Computer Science with a focus on software engineering and artificial intelligence.',
       achievements: [
