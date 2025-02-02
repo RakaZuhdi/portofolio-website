@@ -4,19 +4,22 @@ import { motion } from 'framer-motion';
 import useThemeColors from '../hooks/useThemeColors';
 import ImageCarousel from './ImageCarousel';
 import EmptyAvatar from '../pictures/empty-avatar.jpg'
-import SelfPortrait from '../pictures/self-portrait.jpeg'
+import Komune1 from '../pictures/Komune/Komune_1.JPG'
+import Komune2 from '../pictures/Komune/Komune_2.jpg'
+import Komune3 from '../pictures/Komune/Komune_3.jpg'
+import Komune4 from '../pictures/Komune/Komune_4.jpeg'
 
 const About = () => {
   const colors = useThemeColors();
 
   const experiences = [
     {
-      title: 'Software Engineer',
+      title: 'Full Stack Web and Mobile App Developer',
       company: 'Komune Studio',
       period: 'Feb 2022 - Present',
       description: 'Currently, I am full stack developer working in Komune Studio delivering full stack multi-tier web applications tailored to client needs.',
       achievements: [
-        'Lead 15+ projects in multi-tier web applications and mobile development.',
+        'Lead 15+ projects in multi-tier web applications, mobile development, and VR.',
         'Lead and guided 5 interns during the project.',
         'Implemented CI/CD for automatic deployment using Jenkins.',
         'Established Dockerized development environment for faster development process.',
@@ -26,36 +29,43 @@ const About = () => {
       technologies: [
         'React', 'Node.js', 'Python', 'TensorFlow',
         'Docker', 'AWS', 'MongoDB', 'PostgreSQL',
-        'OpenCV', 'YOLOv8', 'FastAPI', 'Swift'
+        'OpenCV', 'YOLOv8', 'FastAPI', 'Swift', 'Jenkins', 'Unity'
       ],
       images: [
         {
-          url: EmptyAvatar,
-          description: 'Pic 1'
+          url: Komune1,
+          description: "Game night on 2024 new year's eve."
         },
         {
-          url: EmptyAvatar,
-          description: 'Pic 2'
+          url: Komune2,
+          description: "Graduation of interns."
         },
         {
-          url: EmptyAvatar,
-          description: 'Pic 3'
+          url: Komune3,
+          description: 'Sports day.'
+        },
+        {
+          url: Komune4,
+          description: 'Presenting our work to students on an Swiss German University workshop event.'
         },
       ]
     },
     {
-      title: 'Frontend Developer',
-      company: 'Tech Startup',
-      period: '2021 - 2022',
-      description: 'Developed responsive web applications and improved user experience through modern UI/UX practices.',
+      title: "Research Intern and Bachelor's Thesis",
+      company: 'Fachhochschule Südwestfalen',
+      period: "March 2022 - August 2022 (Research Intern), February 2023 - August 2023 (Bachelor's Thesis)",
+      description: 'Developed and documented the implementation of the IEC60870-5-104 communication protocol for SCADA systems, focusing on smart grid integration. Designed and implemented key ASDU types, including short measured values and control commands, ensuring efficient real-time data exchange between substations and control centers. Utilized tools such as Node-RED, InfluxDB, and the lib60870-C library to automate data transmission and processing. Enhanced system scalability and automation by integrating JSON-based IEC servers and Docker-based deployment, improving reliability and operational efficiency in power system monitoring and control.',
       achievements: [
-        'Built reusable component library',
-        'Improved page load time by 30%',
-        'Implemented responsive designs'
+        'Engineered a SCADA communication system implementing IEC 60870-5-104 protocol, enabling real-time power grid monitoring and control under the supervision of Prof. Dr.-Ing Egon Ortjohann',
+          'Implemented key Application Service Data Units (ASDUs) for real-time monitoring (M_ME_TF_1), remote device control (C_SC_NA_1), and two-step command execution (C_DC_NA_1).',
+          'Designed JSON-based IEC 60870-5-104 server that translates ASDUs to and from JSON for integration with modern systems.',
+          'Developed Node-RED-based communication flows to automate data processing, logging, and command execution.',
+          'Integrated InfluxDB alerts to notify control centers of threshold breaches in power grid data.',
+          'Migrated the system from a virtual machine to an embedded PCs (Smart Grid Cluster Controller), enhancing performance and scalability.',
+          'Conducted stress testing and functional validation to ensure the system\'s reliability and responsiveness.'
       ],
       technologies: [
-        'React', 'Next.js', 'TypeScript', 'Tailwind CSS',
-        'Redux', 'GraphQL', 'Jest', 'Cypress'
+        'Node-RED', 'InfluxDB', 'C', 'IEC60870-5-104 (IEC104)', 'Docker', 'WINPP104'
       ],
       images: [
         {
@@ -65,6 +75,10 @@ const About = () => {
         {
           url: '/images/about/designers.jpg',
           description: 'Working closely with designers to implement pixel-perfect UI components and animations.'
+        },
+        {
+          url: '/images/about/responsive-design.jpg',
+          description: 'Ensuring seamless experiences across all devices through responsive design principles.'
         },
         {
           url: '/images/about/responsive-design.jpg',

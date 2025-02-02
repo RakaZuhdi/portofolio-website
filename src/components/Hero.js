@@ -118,7 +118,7 @@ const Hero = () => {
                     lineHeight: 1.3,
                   }}
                 >
-                    🚀 Crafting digital experiences that matters!
+                    🚀 Crafting digital experiences that matter!
                 </Typography>
               </motion.div>
 
