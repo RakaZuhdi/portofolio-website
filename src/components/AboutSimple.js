@@ -105,7 +105,7 @@ const AboutSimple = () => {
         {
             title: 'Part Time Full Stack Developer Freelancer',
             company: 'Self-employed',
-            period: '2022 - Present',
+            period: 'July 2024 - Present',
             description: 'Currently, a full stack developer specializing in web applications and computer vision solutions.',
             skills: [
                 'ReactJS', 'Node.js', 'Python', 'TensorFlow',
