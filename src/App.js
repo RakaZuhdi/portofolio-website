@@ -10,6 +10,8 @@ import Contact from './components/Contact';
 import ProjectDetail from './components/ProjectDetail';
 import Hobbies from './components/Hobbies';
 import useSmoothScroll from './hooks/useSmoothScroll';
+import AboutSimple from "./components/AboutSimple";
+import Album from "./components/Album";
 
 function App() {
   useSmoothScroll();
@@ -23,7 +25,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Hero />} />
             <Route path="/home" element={<Hero />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<AboutSimple />} />
+            <Route path="/aboutSimple" element={<AboutSimple />} />
+            <Route path="/album" element={<Album />} />
             <Route path="/projects" element={<ProjectDetail />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/hobbies" element={<Hobbies />} />
