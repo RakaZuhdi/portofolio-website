@@ -1,20 +1,20 @@
 import React from 'react';
-import { Box, Typography, Container, Button, Grid } from '@mui/material';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Box, Container, Typography, Button } from '@mui/material';
+import { motion } from 'framer-motion';
 import useThemeColors from '../hooks/useThemeColors';
-
-let SelfPortrait = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/random/5X5.JPG'
+import { useNavigate } from 'react-router-dom';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const Hero = () => {
   const colors = useThemeColors();
+  const navigate = useNavigate();
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.3,
       },
     },
   };
@@ -26,236 +26,153 @@ const Hero = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut",
+        ease: [0.6, -0.05, 0.01, 0.99],
       },
     },
   };
 
   return (
     <Box
-      component={motion.div}
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
       sx={{
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        background: colors.backgroundGradient,
         position: 'relative',
         overflow: 'hidden',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          width: '60%',
-          height: '60%',
-          right: '-20%',
-          top: '-20%',
-          background: `radial-gradient(circle, ${colors.glowPrimary} 0%, ${colors.glowSecondary} 70%)`,
-          borderRadius: '50%',
-          filter: 'blur(80px)',
-        },
-        '&::after': {
-          content: '""',
-          position: 'absolute',
-          width: '50%',
-          height: '50%',
-          left: '-10%',
-          bottom: '-10%',
-          background: `radial-gradient(circle, ${colors.glowPrimary} 0%, ${colors.glowSecondary} 70%)`,
-          borderRadius: '50%',
-          filter: 'blur(80px)',
-        }
+        backgroundColor: colors.backgroundPrimary,
       }}
     >
-      <Container maxWidth="lg">
-        <Grid container spacing={6} alignItems="center">
-          <Grid item xs={12} md={7}>
-            <Box sx={{ position: 'relative', zIndex: 1 }}>
-              <motion.div variants={itemVariants}>
-                <Typography
-                  sx={{
-                    color: colors.primary,
-                    mb: 2,
-                    fontWeight: 500,
-                    letterSpacing: '0.1em',
-                    fontSize: { xs: '0.9rem', md: '1rem' },
-                  }}
-                >
-                  Hi, my name is
-                </Typography>
-              </motion.div>
-              
-              <motion.div variants={itemVariants}>
-                <Typography
-                  variant="h1"
-                  component="h1"
-                  sx={{
-                    fontWeight: 600,
-                    letterSpacing: '-0.02em',
-                    lineHeight: 1.2,
-                    fontSize: { xs: '2.5rem', md: '3.5rem' },
-                    color: colors.textPrimary,
-                    mb: 2,
-                    background: `linear-gradient(90deg, ${colors.textPrimary}, ${colors.textSecondary})`,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                  }}
-                >
-                  Muhammad Raka Zuhdi
-                </Typography>
-              </motion.div>
-              <motion.div variants={itemVariants}>
-                <Typography
-                  variant="h2"
-                  sx={{
-                    color: colors.textSecondary,
-                    mb: 3,
-                    fontSize: { xs: '1.8rem', md: '2.5rem' },
-                    fontWeight: 600,
-                    letterSpacing: '-0.02em',
-                    lineHeight: 1.3,
-                  }}
-                >
-                    🚀 Crafting digital experiences that matter!
-                </Typography>
-              </motion.div>
+      {/* Background gradient */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '10%',
+          left: '5%',
+          width: '50%',
+          height: '50%',
+          background: `radial-gradient(circle, ${colors.primary}20 0%, transparent 70%)`,
+          filter: 'blur(80px)',
+          zIndex: 0,
+        }}
+      />
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '10%',
+          right: '5%',
+          width: '40%',
+          height: '40%',
+          background: `radial-gradient(circle, ${colors.primary}15 0%, transparent 70%)`,
+          filter: 'blur(60px)',
+          zIndex: 0,
+        }}
+      />
 
-              <motion.div variants={itemVariants}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: colors.textSecondary,
-                    mb: 5,
-                    maxWidth: '540px',
-                    lineHeight: 1.8,
-                    fontSize: { xs: '1rem', md: '1.1rem' },
-                    opacity: 0.9
-                  }}
-                >
-                    Full Stack Developer passionate about building human-centered, accessible, and impactful applications. Let’s make tech more intuitive and fun! ✨                </Typography>
-              </motion.div>
-
-              <Box
-                component={motion.div}
-                variants={itemVariants}
-                sx={{ display: 'flex', gap: '1.5rem' }}
-              >
-                <Button
-                  variant="outlined"
-                  sx={{
-                    color: colors.primary,
-                    borderColor: colors.primary,
-                    padding: '0.8rem 2rem',
-                    borderRadius: '4px',
-                    textTransform: 'none',
-                    fontSize: '1rem',
-                    fontWeight: 500,
-                    borderWidth: '1.5px',
-                    '&:hover': {
-                      borderColor: colors.primary,
-                      backgroundColor: colors.primaryLight,
-                      transform: 'translateY(-2px)',
-                    },
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  View Projects
-                </Button>
-                <Button
-                  variant="text"
-                  sx={{
-                    color: colors.textSecondary,
-                    padding: '0.8rem 2rem',
-                    borderRadius: '4px',
-                    textTransform: 'none',
-                    fontSize: '1rem',
-                    fontWeight: 500,
-                    '&:hover': {
-                      backgroundColor: colors.textSecondaryLight,
-                      transform: 'translateY(-2px)',
-                      color: colors.primary,
-                    },
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  Contact Me
-                </Button>
-              </Box>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={5}>
-            <motion.div
-              variants={itemVariants}
-              style={{
-                position: 'relative',
-                padding: '20px'
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+        <Box
+          component={motion.div}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          sx={{
+            textAlign: 'center',
+            py: { xs: 8, md: 12 },
+          }}
+        >
+          <motion.div variants={itemVariants}>
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: { xs: '2.5rem', md: '4rem' },
+                fontWeight: 700,
+                color: colors.textPrimary,
+                mb: 2,
+                letterSpacing: '-0.02em',
               }}
             >
-              <Box
-                sx={{
-                  position: 'relative',
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: '20px',
-                    left: '20px',
-                    width: '100%',
-                    height: '100%',
-                    border: '2px solid ' + colors.primary,
-                    borderRadius: '4px',
-                    zIndex: 0,
-                    transition: 'all 0.3s ease-in-out'
-                  },
-                  '&:hover::before': {
-                    transform: 'translate(-10px, -10px)',
-                  },
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    top: '40px',
-                    left: '40px',
-                    width: '100%',
-                    height: '100%',
-                    border: '2px solid ' + colors.primaryLight,
-                    borderRadius: '4px',
-                    zIndex: 0,
-                    transition: 'all 0.3s ease-in-out'
-                  },
-                  '&:hover::after': {
-                    transform: 'translate(-20px, -20px)',
-                  }
-                }}
-              >
-                <Box
-                  component="img"
-                  src={SelfPortrait}
-                  sx={{
-                    width: '100%',
-                    height: 'auto',
-                    maxHeight: '450px',
-                    objectFit: 'cover',
-                    borderRadius: '4px',
-                    filter: 'grayscale(30%)',
-                    transition: 'all 0.3s ease',
-                    position: 'relative',
-                    zIndex: 1,
-                    boxShadow: '0 10px 30px -15px rgba(0,0,0,0.5)',
-                    border: '1px solid ' + colors.primaryLight,
-                    backgroundColor: colors.backgroundPrimary,
-                    '&:hover': {
-                      filter: 'grayscale(0%)',
-                      transform: 'scale(1.02)',
-                      boxShadow: '0 20px 40px -20px rgba(0,0,0,0.7)',
-                      borderColor: colors.primary,
-                    }
-                  }}
-                />
-              </Box>
-            </motion.div>
-          </Grid>
-        </Grid>
+              Muhammad Raka Zuhdi
+            </Typography>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: { xs: '1.5rem', md: '2rem' },
+                fontWeight: 500,
+                color: colors.primary,
+                mb: 4,
+                letterSpacing: '0.02em',
+              }}
+            >
+              Full Stack Developer
+            </Typography>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: { xs: '1rem', md: '1.2rem' },
+                color: colors.textSecondary,
+                maxWidth: '600px',
+                mx: 'auto',
+                mb: 6,
+                lineHeight: 1.8,
+              }}
+            >
+              Passionate about creating efficient and scalable applications.
+              Specialized in full-stack development and computer vision solutions.
+            </Typography>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Button
+              variant="outlined"
+              onClick={() => navigate('/about')}
+              sx={{
+                borderColor: colors.primary,
+                color: colors.primary,
+                px: 4,
+                py: 1.5,
+                borderRadius: '50px',
+                fontSize: '1.1rem',
+                textTransform: 'none',
+                '&:hover': {
+                  borderColor: colors.primary,
+                  backgroundColor: `${colors.primary}10`,
+                },
+              }}
+            >
+              View My Journey
+            </Button>
+          </motion.div>
+        </Box>
       </Container>
+
+      {/* Scroll indicator */}
+      <Box
+        component={motion.div}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 1,
+          delay: 2,
+          repeat: Infinity,
+          repeatType: 'reverse',
+        }}
+        sx={{
+          position: 'absolute',
+          bottom: 40,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          color: colors.textSecondary,
+          cursor: 'pointer',
+          zIndex: 1,
+        }}
+      >
+        <KeyboardArrowDownIcon sx={{ fontSize: 40 }} />
+      </Box>
     </Box>
   );
 };

@@ -66,10 +66,11 @@ function ColorlibStepIcon(props) {
 
   const icons = {
     1: <img src={KS_ICON} alt="Komune Studio" />,
-    2:  <img src={FH_ICON} alt="FH Südwestfalen" />,
+    2:  <img src={SELF_ICON} alt="Self-employed icon" />,
     3:  <img src={FH_ICON} alt="FH Südwestfalen" />,
-    4: <img src={FH_ICON} alt="FH Südwestfalen" />,
-    5: <img src={SGU_ICON} alt="Swiss German University" />,
+    4:  <img src={FH_ICON} alt="FH Südwestfalen" />,
+    5: <img src={FH_ICON} alt="FH Südwestfalen" />,
+    6: <img src={SGU_ICON} alt="Swiss German University" />,
   };
 
   return (
@@ -82,6 +83,7 @@ function ColorlibStepIcon(props) {
 let FH_ICON = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/icons/fachhochschule_s_dwestfalen_logo.jpeg'
 let SGU_ICON = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/icons/logo-sgu-square.jpg'
 let KS_ICON  = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/icons/komune_studio_software_house_logo.jpeg'
+let SELF_ICON = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/icons/images.png'
 
 const AboutSimple = () => {
     const colors = useThemeColors();
@@ -90,6 +92,18 @@ const AboutSimple = () => {
         {
             title: 'Full Stack and Mobile App Developer',
             company: 'Komune Studio',
+            period: '2022 - Present',
+            description: 'Currently, a full stack developer specializing in web applications and computer vision solutions.',
+            skills: [
+                'ReactJS', 'Node.js', 'Python', 'TensorFlow',
+                'Docker', 'AWS', 'MongoDB', 'PostgreSQL',
+                'OpenCV', 'YOLOv8', 'FastAPI', 'Swift', 'Jenkins', 'Unity',
+                'Unix', 'Kotlin', 'Android Java', 'React Native', 'SparkAR'
+            ]
+        },
+        {
+            title: 'Part Time Full Stack Developer Freelancer',
+            company: 'Self-employed',
             period: '2022 - Present',
             description: 'Currently, a full stack developer specializing in web applications and computer vision solutions.',
             skills: [
