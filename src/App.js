@@ -23,8 +23,8 @@ function App() {
             <Route path="/about" element={<AboutSimple />} />
             {/*<Route path="/projects" element={<Projects />} />*/}
             {/*<Route path="/projects/:id" element={<ProjectDetail />} />*/}
-            <Route path="/album" element={<Album />} />
-            <Route path="/hobbies" element={<UnderConstruction />} />
+            {/*<Route path="/album" element={<Album />} />*/}
+            {/*<Route path="/hobbies" element={<UnderConstruction />} />*/}
             <Route path="/contact" element={<UnderConstruction />} />
             <Route path="*" element={<UnderConstruction />} />
           </Routes>
