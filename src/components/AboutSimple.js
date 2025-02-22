@@ -22,7 +22,7 @@ const AboutSimple = () => {
             title: "Bachelor's Thesis",
             company: 'Power Systems & Power Economics Laboratory at Fachhochschule Südwestfalen',
             period: 'February 2023 - July 2023',
-            description: 'Developed an IEC60870-5-104 server for the Smart Grid Cluster Controller (SGCC).',
+            description: 'Continued the IEC60870-5-104 communication server development and testing for the Smart Grid Cluster Controller (SGCC).',
             skills: [
                 'Node-RED', 'InfluxDB', 'C', 'IEC60870-5-104 (IEC104)', 'Docker', 'WINPP104', 'MongoDB'
             ]
@@ -31,7 +31,7 @@ const AboutSimple = () => {
             title: 'Research Intern',
             company: 'Power Systems & Power Economics Laboratory at Fachhochschule Südwestfalen',
             period: 'March 2022 - August 2022',
-            description: 'Developed an IEC60870-5-104 server for the Smart Grid Cluster Controller (SGCC)',
+            description: 'Developed an IEC60870-5-104 server for the Smart Grid Cluster Controller (SGCC).',
             skills: [
                 'Node-RED', 'InfluxDB', 'C', 'IEC60870-5-104 (IEC104)', 'Docker', 'WINPP104', 'MongoDB'
             ]
@@ -40,8 +40,7 @@ const AboutSimple = () => {
             title: "B.Eng. in Industrial Engineering",
             company: 'Fachhochschule Südwestfalen',
             period: 'April 2020 - July 2023',
-            description: 'Developed responsive web applications and maintained frontend infrastructure.',
-            skills: ['React', 'TypeScript', 'Redux', 'Material-UI']
+            description: "Completed Bachelor's of Engineering in Industrial Engineering as part of the Swiss German University's double degree program. ",
         },
         {
             title: "B.S. in Information Technology (Sarjana Komputer)",
@@ -50,8 +49,6 @@ const AboutSimple = () => {
             description: 'Bachelor\'s degree with focus on software engineering and artificial intelligence.',
             skills: ['Algorithms', 'Machine Learning', 'Web Development']
         },
-
-
     ];
 
     return (
@@ -144,18 +141,31 @@ const AboutSimple = () => {
                                             sx={{
                                                 color: colors.textPrimary,
                                                 fontWeight: 600,
+                                                mb: 0.5,
                                             }}
                                         >
                                             {exp.title}
                                         </Typography>
                                         <Typography
-                                            variant="subtitle1"
+                                            variant="h6"
                                             sx={{
-                                                color: colors.primary,
-                                                fontWeight: 500,
+                                                color: colors.textSecondary,
+                                                fontWeight: 600,
+                                                fontSize: '1.1rem',
+                                                mb: 0.5,
                                             }}
                                         >
-                                            {exp.company} • {exp.period}
+                                            {exp.company}
+                                        </Typography>
+                                        <Typography
+                                            variant="subtitle1"
+                                            sx={{
+                                                color: colors.textSecondary,
+                                                fontWeight: 500,
+                                                fontSize: '0.9rem',
+                                            }}
+                                        >
+                                            {exp.period}
                                         </Typography>
                                     </Box>
                                 </StepLabel>
@@ -177,7 +187,7 @@ const AboutSimple = () => {
                                             mb: 3,
                                         }}
                                     >
-                                        {exp.skills.map((skill) => (
+                                        {exp?.skills?.map((skill) => (
                                             <Paper
                                                 key={skill}
                                                 component={motion.div}
