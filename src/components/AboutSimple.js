@@ -2,6 +2,86 @@ import React from 'react';
 import {Box, Typography, Container, Grid, Paper, Stepper, Step, StepLabel, StepContent} from '@mui/material';
 import {motion} from 'framer-motion';
 import useThemeColors from '../hooks/useThemeColors';
+import DeveloperModeIcon from '@mui/icons-material/DeveloperMode';
+import SchoolIcon from '@mui/icons-material/School';
+import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
+import BiotechIcon from '@mui/icons-material/Biotech';
+import { styled } from '@mui/material/styles';
+import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
+
+const ColorlibConnector = styled(StepConnector)(({ theme, colors }) => ({
+  [`&.${stepConnectorClasses.alternativeLabel}`]: {
+    top: 22,
+  },
+  [`&.${stepConnectorClasses.active}`]: {
+    [`& .${stepConnectorClasses.line}`]: {
+      borderColor: `${colors.primary}40`,
+    },
+  },
+  [`&.${stepConnectorClasses.completed}`]: {
+    [`& .${stepConnectorClasses.line}`]: {
+      borderColor: `${colors.primary}40`,
+    },
+  },
+  [`& .${stepConnectorClasses.line}`]: {
+    height: '100%',
+    borderLeft: `2px solid ${colors.primary}40`,
+    backgroundColor: 'transparent',
+  },
+}));
+
+const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1f2940' : '#fff',
+  zIndex: 1,
+  width: 50,
+  height: 50,
+  display: 'flex',
+  borderRadius: '50%',
+  justifyContent: 'center',
+  alignItems: 'center',
+  transition: 'all 0.3s ease',
+  border: '2px solid transparent',
+  overflow: 'hidden',
+  ...(ownerState.active && {
+    borderColor: theme.palette.primary.main,
+    boxShadow: '0 4px 10px 0 rgba(33, 150, 243, 0.3)',
+  }),
+  ...(ownerState.completed && {
+    borderColor: theme.palette.primary.main,
+  }),
+  '&:hover': {
+    transform: 'scale(1.1)',
+    boxShadow: '0 6px 15px 0 rgba(33, 150, 243, 0.35)',
+  },
+  '& img': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  },
+}));
+
+function ColorlibStepIcon(props) {
+  const { active, completed, className } = props;
+  const colors = useThemeColors();
+
+  const icons = {
+    1: <img src={KS_ICON} alt="Komune Studio" />,
+    2:  <img src={FH_ICON} alt="FH Südwestfalen" />,
+    3:  <img src={FH_ICON} alt="FH Südwestfalen" />,
+    4: <img src={FH_ICON} alt="FH Südwestfalen" />,
+    5: <img src={SGU_ICON} alt="Swiss German University" />,
+  };
+
+  return (
+    <ColorlibStepIconRoot ownerState={{ completed, active }} className={className}>
+      {icons[String(props.icon)]}
+    </ColorlibStepIconRoot>
+  );
+}
+
+let FH_ICON = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/icons/fachhochschule_s_dwestfalen_logo.jpeg'
+let SGU_ICON = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/icons/logo-sgu-square.jpg'
+let KS_ICON  = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/icons/komune_studio_software_house_logo.jpeg'
 
 const AboutSimple = () => {
     const colors = useThemeColors();
@@ -13,9 +93,10 @@ const AboutSimple = () => {
             period: '2022 - Present',
             description: 'Currently, a full stack developer specializing in web applications and computer vision solutions.',
             skills: [
-                'React', 'Node.js', 'Python', 'TensorFlow',
+                'ReactJS', 'Node.js', 'Python', 'TensorFlow',
                 'Docker', 'AWS', 'MongoDB', 'PostgreSQL',
-                'OpenCV', 'YOLOv8', 'FastAPI', 'Swift', 'Jenkins', 'Unity'
+                'OpenCV', 'YOLOv8', 'FastAPI', 'Swift', 'Jenkins', 'Unity',
+                'Unix', 'Kotlin', 'Android Java', 'React Native', 'SparkAR'
             ]
         },
         {
@@ -40,14 +121,18 @@ const AboutSimple = () => {
             title: "B.Eng. in Industrial Engineering",
             company: 'Fachhochschule Südwestfalen',
             period: 'April 2020 - July 2023',
-            description: "Completed Bachelor's of Engineering in Industrial Engineering as part of the Swiss German University's double degree program. ",
+            description: "Completed B.Eng. in Industrial Engineering as part of the Swiss German University's double degree program. ",
         },
         {
             title: "B.S. in Information Technology (Sarjana Komputer)",
             company: 'Swiss German University',
             period: 'July 2019 - July 2023',
-            description: 'Bachelor\'s degree with focus on software engineering and artificial intelligence.',
-            skills: ['Algorithms', 'Machine Learning', 'Web Development']
+            description: 'Completed B.S. in Information Technology focusing on computer science.',
+            skills: [
+                'C++', 'MySQL', 'Unix', 'Elastic Stack', 'AWS', 'PostgreSQL',
+                'Java', 'PHP', 'YoloV8', 'OpenCV', 'Python', 'Wazuh', 'Kali Linux',
+                'C#', 'Unity', 'Flutter', 'Node.js', 'Odoo', 'Swift', 'Kotlin'
+            ]
         },
     ];
 
@@ -60,47 +145,6 @@ const AboutSimple = () => {
                 transition={{duration: 0.6}}
                 sx={{py: 8}}
             >
-                {/*<Paper*/}
-                {/*  elevation={0}*/}
-                {/*  sx={{*/}
-                {/*    p: 4,*/}
-                {/*    backgroundColor: `${colors.backgroundElevated}`,*/}
-                {/*    borderRadius: 2,*/}
-                {/*    border: `1px solid ${colors.borderPrimary}`,*/}
-                {/*    mb: 4,*/}
-                {/*  }}*/}
-                {/*>*/}
-                {/*  <Typography*/}
-                {/*    variant="h4"*/}
-                {/*    sx={{*/}
-                {/*      color: colors.primary,*/}
-                {/*      fontWeight: 600,*/}
-                {/*      mb: 2,*/}
-                {/*    }}*/}
-                {/*  >*/}
-                {/*    John Doe*/}
-                {/*  </Typography>*/}
-                {/*  <Typography*/}
-                {/*    variant="h6"*/}
-                {/*    sx={{*/}
-                {/*      color: colors.textPrimary,*/}
-                {/*      mb: 3,*/}
-                {/*    }}*/}
-                {/*  >*/}
-                {/*    Full Stack Developer*/}
-                {/*  </Typography>*/}
-                {/*  <Typography*/}
-                {/*    variant="body1"*/}
-                {/*    sx={{*/}
-                {/*      color: colors.textPrimary,*/}
-                {/*      lineHeight: 1.8,*/}
-                {/*    }}*/}
-                {/*  >*/}
-                {/*    Passionate developer with expertise in full-stack development and computer vision solutions.*/}
-                {/*    Focused on creating efficient and scalable applications that solve real-world problems.*/}
-                {/*  </Typography>*/}
-                {/*</Paper>*/}
-
                 <Paper
                     elevation={0}
                     sx={{
@@ -122,19 +166,21 @@ const AboutSimple = () => {
                         Experience & Education
                     </Typography>
 
-                    <Stepper orientation="vertical" sx={{
-                        '& .MuiStepConnector-line': {
-                            borderLeftColor: `${colors.primary}40`,
-                        },
-                        '& .MuiStepLabel-iconContainer': {
-                            '& .MuiStepIcon-root': {
-                                color: colors.primary,
+                    <Stepper 
+                        orientation="vertical" 
+                        connector={<ColorlibConnector colors={colors}/>}
+                        sx={{
+                            '& .MuiStepLabel-iconContainer': {
+                                pr: 3,
                             },
-                        },
-                    }}>
+                            '& .MuiStepConnector-line': {
+                                borderLeftColor: `${colors.primary}40`,
+                            },
+                        }}
+                    >
                         {experiences.map((exp, index) => (
                             <Step key={index} active={true} expanded={true}>
-                                <StepLabel>
+                                <StepLabel StepIconComponent={ColorlibStepIcon} icon={index + 1}>
                                     <Box sx={{mb: 1}}>
                                         <Typography
                                             variant="h6"
