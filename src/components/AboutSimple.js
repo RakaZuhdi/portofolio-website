@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Typography, Container, Grid, Paper, Stepper, Step, StepLabel, StepContent} from '@mui/material';
+import {Box, Typography, Container, Grid, Paper, Stepper, Step, StepLabel, StepContent, IconButton, Stack} from '@mui/material';
 import {motion} from 'framer-motion';
 import useThemeColors from '../hooks/useThemeColors';
 import DeveloperModeIcon from '@mui/icons-material/DeveloperMode';
@@ -8,6 +8,7 @@ import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import BiotechIcon from '@mui/icons-material/Biotech';
 import { styled } from '@mui/material/styles';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const ColorlibConnector = styled(StepConnector)(({ theme, colors }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -90,15 +91,15 @@ const AboutSimple = () => {
 
     const experiences = [
         {
-            title: 'Full Stack and Mobile App Developer',
+            title: 'Full Stack Developer',
             company: 'Komune Studio',
-            period: '2022 - Present',
-            description: 'Currently, a full stack developer specializing in web applications and computer vision solutions.',
+            period: 'August 2023 - Present',
+            description: 'Working as a full stack developer in a software house company, focusing on web and mobile development.',
+            link: 'https://komunestudio.com',
             skills: [
-                'ReactJS', 'Node.js', 'Python', 'TensorFlow',
-                'Docker', 'AWS', 'MongoDB', 'PostgreSQL',
-                'OpenCV', 'YOLOv8', 'FastAPI', 'Swift', 'Jenkins', 'Unity',
-                'Unix', 'Kotlin', 'Android Java', 'React Native', 'SparkAR'
+                'ReactJS', 'Node.js', 'Python', 'MongoDB',
+                'PostgreSQL', 'Docker', 'AWS', 'TypeScript',
+                'Unix', 'Kotlin', 'Android Java', 'React Native'
             ]
         },
         {
@@ -117,6 +118,7 @@ const AboutSimple = () => {
             title: "Bachelor's Thesis",
             company: 'Power Systems & Power Economics Laboratory at Fachhochschule Südwestfalen',
             period: 'February 2023 - July 2023',
+            link: 'https://drive.google.com/file/d/1I4C9vRYLjv_XWQruDRB3_t4Dkosu85_3/view?usp=sharing',
             description: 'Continued the IEC60870-5-104 communication server development and testing for the Smart Grid Cluster Controller (SGCC).',
             skills: [
                 'Node-RED', 'InfluxDB', 'C', 'IEC60870-5-104 (IEC104)', 'Docker', 'WINPP104', 'MongoDB'
@@ -129,7 +131,8 @@ const AboutSimple = () => {
             description: 'Developed an IEC60870-5-104 server for the Smart Grid Cluster Controller (SGCC).',
             skills: [
                 'Node-RED', 'InfluxDB', 'C', 'IEC60870-5-104 (IEC104)', 'Docker', 'WINPP104', 'MongoDB'
-            ]
+            ],
+            link: 'https://drive.google.com/file/d/11VVA5NnoFijUIQ2LJ3Syr9q4LE7Kmu4p/view?usp=sharing'
         },
         {
             title: "B.Eng. in Industrial Engineering",
@@ -195,39 +198,35 @@ const AboutSimple = () => {
                         {experiences.map((exp, index) => (
                             <Step key={index} active={true} expanded={true}>
                                 <StepLabel StepIconComponent={ColorlibStepIcon} icon={index + 1}>
-                                    <Box sx={{mb: 1}}>
-                                        <Typography
-                                            variant="h6"
-                                            sx={{
-                                                color: colors.textPrimary,
-                                                fontWeight: 600,
-                                                mb: 0.5,
-                                            }}
-                                        >
+                                    <Stack direction="row" alignItems="center" spacing={1}>
+                                        <Typography variant="h6" sx={{ fontWeight: 600, color: colors.textPrimary }}>
                                             {exp.title}
                                         </Typography>
-                                        <Typography
-                                            variant="h6"
-                                            sx={{
-                                                color: colors.textSecondary,
-                                                fontWeight: 600,
-                                                fontSize: '1.1rem',
-                                                mb: 0.5,
-                                            }}
-                                        >
-                                            {exp.company}
-                                        </Typography>
-                                        <Typography
-                                            variant="subtitle1"
-                                            sx={{
-                                                color: colors.textSecondary,
-                                                fontWeight: 500,
-                                                fontSize: '0.9rem',
-                                            }}
-                                        >
-                                            {exp.period}
-                                        </Typography>
-                                    </Box>
+                                        {exp.link && (
+                                            <IconButton 
+                                                href={exp.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                size="small"
+                                                sx={{ 
+                                                    color: colors.primary,
+                                                    '&:hover': {
+                                                        color: colors.primaryLight,
+                                                        transform: 'translateY(-2px)',
+                                                    },
+                                                    transition: 'all 0.2s ease-in-out',
+                                                }}
+                                            >
+                                                <OpenInNewIcon fontSize="small" />
+                                            </IconButton>
+                                        )}
+                                    </Stack>
+                                    <Typography variant="subtitle1" sx={{ color: colors.textSecondary, fontWeight: 600 }}>
+                                        {exp.company}
+                                    </Typography>
+                                    <Typography variant="body2" sx={{ color: colors.textSecondary }}>
+                                        {exp.period}
+                                    </Typography>
                                 </StepLabel>
                                 <StepContent>
                                     <Typography
