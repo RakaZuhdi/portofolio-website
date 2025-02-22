@@ -33,7 +33,7 @@ const ImageCarousel = ({ images }) => {
     if (!isPaused && images.length > 1) {
       const timer = setInterval(() => {
         handleNext();
-      }, 5000); // Change image every 5 seconds
+      }, 20000); // Change image every 5 seconds
 
       return () => clearInterval(timer);
     }

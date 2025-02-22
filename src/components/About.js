@@ -3,20 +3,26 @@ import { Box, Container, Typography, Stepper, Step, StepLabel, StepContent, Pape
 import { motion } from 'framer-motion';
 import useThemeColors from '../hooks/useThemeColors';
 import ImageCarousel from './ImageCarousel';
-import EmptyAvatar from '../pictures/empty-avatar.jpg'
-import Komune1 from '../pictures/Komune/Komune_1.JPG'
-import Komune2 from '../pictures/Komune/Komune_2.jpg'
-import Komune3 from '../pictures/Komune/Komune_3.jpg'
-import Komune4 from '../pictures/Komune/Komune_4.jpeg'
 
-import FH_1 from '../pictures/FH/FH_1.jpeg'
-import FH_2 from '../pictures/FH/FH_2.jpeg'
-import FH_3 from '../pictures/FH/FH_3.jpeg'
-import FH_4 from '../pictures/FH/FH_4.jpeg'
-import FH_5 from '../pictures/FH/FH_5.jpeg'
-import FH_6 from '../pictures/FH/FH_6.JPG'
-import FH_7 from '../pictures/FH/FH_7.jpeg'
-import FH_8 from '../pictures/FH/FH_8.jpeg'
+let FH_9 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/fh/IMG_4962.jpeg'
+let FH_2 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/fh/IMG_4980.JPG'
+let FH_3 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/fh/IMG_4998.jpeg'
+let FH_4 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/fh/IMG_5081.jpeg'
+let FH_5 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/fh/IMG_5145.jpeg'
+let FH_6 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/fh/IMG_7027.jpeg'
+let FH_7 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/fh/IMG_7070.jpeg'
+let FH_8 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/fh/IMG_7277.jpeg'
+let FH_1 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/fh/IMG_7303.jpeg'
+
+let Komune4 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/komune-studio/IMG_0931.jpeg'
+let Komune1 ='https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/komune-studio/Komune_1.JPG'
+let Komune2 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/komune-studio/Komune_2.jpg'
+let Komune3 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/komune-studio/Komune_3.jpg'
+
+let SGU_1 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/sgu/ed6c5d87-288e-47cf-8620-2789a14e1724.jpg'
+let SGU_2 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/sgu/IMG_0059.JPG'
+let SGU_3 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/sgu/IMG_0060.JPG'
+let SGU_4 = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/sgu/IMG_9698.jpeg'
 
 const About = () => {
   const colors = useThemeColors();
@@ -29,7 +35,7 @@ const About = () => {
       description: 'Currently, I am full stack developer working in Komune Studio delivering full stack multi-tier web applications tailored to client needs.',
       achievements: [
         'Lead 15+ projects in multi-tier web applications, mobile development, and VR.',
-        'Lead and guided 5 interns during the project.',
+        'Supervised and trained 5 interns for full stack and mobile development.',
         'Implemented CI/CD for automatic deployment using Jenkins.',
         'Established Dockerized development environment for faster development process.',
         'In charge of mainly of projects that used that has Computer Vision elements (Face Recognition, Crowd Detection, Object Detection).',
@@ -43,73 +49,76 @@ const About = () => {
       images: [
         {
           url: Komune1,
-          description: "Game night on 2024 new year's eve."
+          description: "New's Eve Intense Game Night on the Office."
         },
         {
           url: Komune2,
-          description: "Graduation of interns."
+          description: "Interns Day!"
         },
         {
           url: Komune3,
-          description: 'Sports day.'
+          description: 'Badminton tournament day!'
         },
         {
           url: Komune4,
-          description: 'Presenting our work to students on an Swiss German University workshop event.'
+          description: 'Presenting our work to students on an Swiss German University workshop event A.K.A intern hunting.'
         },
       ]
     },
     {
-      title: "Research Intern and Bachelor's Thesis",
+      title: "Internship, Bachelor's Thesis, and Double Degree Student",
       company: 'Power Systems & Power Economics Laboratory at Fachhochschule Südwestfalen',
       period: "March 2022 - August 2022 (Research Intern), February 2023 - August 2023 (Bachelor's Thesis)",
       description: 'Developed and documented the implementation of the IEC60870-5-104 communication protocol for SCADA systems, focusing on smart grid integration. Designed and implemented key ASDU types, including short measured values and control commands, ensuring efficient real-time data exchange between substations and control centers. Utilized tools such as Node-RED, InfluxDB, and the lib60870-C library to automate data transmission and processing. Enhanced system scalability and automation by integrating JSON-based IEC servers and Docker-based deployment, improving reliability and operational efficiency in power system monitoring and control.',
       achievements: [
         'Engineered a SCADA communication system implementing IEC 60870-5-104 protocol, enabling real-time power grid monitoring and control under the supervision of Prof. Dr.-Ing Egon Ortjohann',
-          'Implemented key Application Service Data Units (ASDUs) for real-time monitoring (M_ME_TF_1), remote device control (C_SC_NA_1), and two-step command execution (C_DC_NA_1).',
-          'Designed JSON-based IEC 60870-5-104 server that translates ASDUs to and from JSON for integration with modern systems.',
-          'Developed Node-RED-based communication flows to automate data processing, logging, and command execution.',
-          'Integrated InfluxDB alerts to notify control centers of threshold breaches in power grid data.',
-          'Migrated the system from a virtual machine to an embedded PCs (Smart Grid Cluster Controller), enhancing performance and scalability.',
-          'Conducted stress testing and functional validation to ensure the system\'s reliability and responsiveness.'
+        'Implemented key Application Service Data Units (ASDUs) for real-time monitoring (M_ME_TF_1), remote device control (C_SC_NA_1), and two-step command execution (C_DC_NA_1).',
+        'Designed JSON-based IEC 60870-5-104 server that translates ASDUs to and from JSON for integration with modern systems.',
+        'Developed Node-RED-based communication flows to automate data processing, logging, and command execution.',
+        'Integrated InfluxDB alerts to notify control centers of threshold breaches in power grid data.',
+        'Migrated the system from a virtual machine to an embedded PCs (Smart Grid Cluster Controller), enhancing performance and scalability.',
+        'Conducted stress testing and functional validation to ensure the system\'s reliability and responsiveness.'
       ],
       technologies: [
         'Node-RED', 'InfluxDB', 'C', 'IEC60870-5-104 (IEC104)', 'Docker', 'WINPP104', 'MongoDB'
       ],
       images: [
         {
-          url: FH_1,
+          url: FH_8,
           description: "Group picture with Professor Dr.-Ing. Egon Ortjohann and his research assistant, Andreas Schmelter, Dipl.-Ing."
         },
         {
           url: FH_2,
-          description: "Last day at the lab."
+          description: "A group photo with the Frau Andrea Wil from the office of student affairs."
         },
         {
           url: FH_3,
-          description: "Aftermath of final exam for the double degree program."
+          description: "Post final exam group photo #1"
         },
         {
           url: FH_4,
-          description: "Game night on 2024 new year's eve."
+          description: "Post final exam group photo #2"
         },
         {
           url: FH_5,
-          description: "Game night on 2024 new year's eve."
+          description: "Before presenting the internship project proposal."
         },
         {
           url: FH_6,
-          description: "Game night on 2024 new year's eve."
+          description: "Studying my the IEC 60870-5-104 protocol in the comfort of my own office."
         },
         {
           url: FH_7,
-          description: "Game night on 2024 new year's eve."
+          description: "Picture with fellow Indonesian lab members and my supervisor."
         },
         {
-          url: FH_5,
-          description: "Game night on 2024 new year's eve."
+          url: FH_9,
+          description: "First time arriving at the campus."
         },
-
+        {
+          url: FH_1,
+          description: "Post lab project final presentation"
+        }
       ]
     },
     {
@@ -128,17 +137,21 @@ const About = () => {
       ],
       images: [
         {
-          url: '/images/about/university.jpg',
-          description: 'Graduating with honors in Computer Science, focusing on software engineering and AI.'
+          url: SGU_1,
+          description: "Graduating with S.Kom (Sarjana Komputer) and B.Eng (Bachelor's of Engineering)."
         },
         {
-          url: '/images/about/coding-club.jpg',
-          description: 'Leading the university coding club, organizing workshops and hackathons.'
+          url: SGU_2,
+          description: 'Post final thesis presentation day 2'
         },
         {
-          url: '/images/about/hackathon.jpg',
-          description: 'Winning first place at the 2021 Hackathon with an innovative AI-powered solution.'
-        }
+          url: SGU_3,
+          description: 'Post final thesis presentation day 2'
+        },
+        {
+          url: SGU_4,
+          description: 'Post official 2019 batch group picture.'
+        },
       ]
     }
   ];
@@ -420,7 +433,6 @@ const About = () => {
                         </Typography>
                       ))}
                     </Box>
-                    
                     <ImageCarousel images={exp.images} />
                   </Box>
                 </motion.div>

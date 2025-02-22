@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, Typography, Container, Button, Grid } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
-import SelfPortrait from '../pictures/self-portrait.jpeg';
-import EmptyAvatar from '../pictures/empty-avatar.jpg';
 import useThemeColors from '../hooks/useThemeColors';
+
+let SelfPortrait = 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/random/5X5.JPG'
 
 const Hero = () => {
   const colors = useThemeColors();
@@ -105,7 +105,6 @@ const Hero = () => {
                   Muhammad Raka Zuhdi
                 </Typography>
               </motion.div>
-
               <motion.div variants={itemVariants}>
                 <Typography
                   variant="h2"
@@ -230,7 +229,7 @@ const Hero = () => {
               >
                 <Box
                   component="img"
-                  src={EmptyAvatar}
+                  src={SelfPortrait}
                   sx={{
                     width: '100%',
                     height: 'auto',
