@@ -4,18 +4,13 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import theme from './theme';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
 import Projects from './components/Projects';
-import Contact from './components/Contact';
 import ProjectDetail from './components/ProjectDetail';
-import Hobbies from './components/Hobbies';
-import useSmoothScroll from './hooks/useSmoothScroll';
 import AboutSimple from "./components/AboutSimple";
 import Album from "./components/Album";
+import UnderConstruction from './components/UnderConstruction';
 
 function App() {
-  useSmoothScroll();
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -26,12 +21,12 @@ function App() {
             <Route path="/" element={<Hero />} />
             <Route path="/home" element={<Hero />} />
             <Route path="/about" element={<AboutSimple />} />
-            <Route path="/aboutSimple" element={<AboutSimple />} />
+            {/*<Route path="/projects" element={<Projects />} />*/}
+            {/*<Route path="/projects/:id" element={<ProjectDetail />} />*/}
             <Route path="/album" element={<Album />} />
-            <Route path="/projects" element={<ProjectDetail />} />
-            <Route path="/projects/:id" element={<ProjectDetail />} />
-            <Route path="/hobbies" element={<Hobbies />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/hobbies" element={<UnderConstruction />} />
+            <Route path="/contact" element={<UnderConstruction />} />
+            <Route path="*" element={<UnderConstruction />} />
           </Routes>
         </div>
       </Router>
