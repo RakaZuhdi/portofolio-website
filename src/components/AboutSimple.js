@@ -106,7 +106,7 @@ const AboutSimple = () => {
             title: 'Part Time Full Stack Developer Freelancer',
             company: 'Self-employed',
             period: 'July 2024 - Present',
-            description: 'Currently, a full stack developer specializing in web applications and computer vision solutions.',
+            description: 'Currently, a full stack developer specializing in web applications for MSMEs in around Indonesia.',
             skills: [
                 'ReactJS', 'Node.js', 'Python', 'TensorFlow',
                 'Docker', 'AWS', 'MongoDB', 'PostgreSQL',
