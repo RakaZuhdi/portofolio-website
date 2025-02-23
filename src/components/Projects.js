@@ -13,34 +13,12 @@ const Projects = () => {
   const projects = [
     {
       id: 'smart-grid-controller',
-      title: 'Smart Grid Cluster Controller',
-      description: 'Development of IEC60870-5-104 communication server for Smart Grid applications, enabling real-time monitoring and control of grid components.',
-      image: 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/sgcc1.jpg',
-      technologies: ['Node-RED', 'InfluxDB', 'C', 'IEC60870-5-104', 'Docker'],
-      github: 'https://github.com/rakaprsdhkra/sgcc',
-      demo: 'https://drive.google.com/file/d/1I4C9vRYLjv_XWQruDRB3_t4Dkosu85_3/view?usp=sharing',
+      title: 'Containerized IEC60870-5-104 Server Application for Smart Grid Cluster Controller',
+      description: 'I built a containerized IEC 60870-5-104 server for Smart Grid Cluster Controllers, enabling real-time data exchange with **SCADA systems** using **Node-RED, Docker, and InfluxDB. The system translates JSON objects and ASDUs**, supporting monitoring, automation, and remote control** for smarter grid management.',
+      image: 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/random/Screenshot+2025-02-23+at+19.19.14.png',
+      technologies: ['Node-RED', 'Docker', 'InfluxDB', 'ArangoDB', 'json-iec104-server', 'lib60870-C', 'C Programming Language', 'Linux', 'WINPP104', 'Visual Studio Code', 'PuTTY'],
       featured: true
     },
-    {
-      id: 'ar-filter',
-      title: 'AR Filter Development',
-      description: 'Creating engaging AR filters for social media platforms using SparkAR, featuring face tracking and interactive visual effects.',
-      image: 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/ar1.jpg',
-      technologies: ['SparkAR', 'JavaScript', '3D Modeling', 'Animation'],
-      github: 'https://github.com/rakaprsdhkra/ar-filters',
-      demo: 'https://www.instagram.com/ar/your-filter-link',
-      featured: true
-    },
-    {
-      id: 'portfolio',
-      title: 'Personal Portfolio',
-      description: 'A modern, responsive portfolio website built with React and Material-UI, featuring smooth animations and dark mode support.',
-      image: 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/portfolio1.jpg',
-      technologies: ['React', 'Material-UI', 'Framer Motion', 'AWS S3'],
-      github: 'https://github.com/rakaprsdhkra/portfolio',
-      demo: 'https://your-portfolio-url.com',
-      featured: true
-    }
   ];
 
   const containerVariants = {

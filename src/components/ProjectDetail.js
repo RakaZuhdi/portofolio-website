@@ -14,33 +14,6 @@ const ProjectDetail = () => {
 
   // Project data - in a real app, this would come from an API or database
   const projects = {
-    'smart-grid-controller': {
-      title: 'Smart Grid Cluster Controller',
-      description: 'Development of IEC60870-5-104 communication server for Smart Grid applications.',
-      longDescription: [
-        'Developed a sophisticated IEC60870-5-104 communication server for the Smart Grid Cluster Controller (SGCC), enabling seamless integration of power system components and real-time monitoring capabilities.',
-        'Implemented robust communication protocols that ensure reliable data exchange between grid components, supporting critical operations in power distribution networks. The system handles real-time monitoring, data acquisition, and control commands with high reliability and minimal latency.',
-        'Successfully integrated the SGCC with existing power system infrastructure, demonstrating its effectiveness in managing complex grid operations. The project showcases innovative approaches to smart grid technology and contributes to the advancement of modern power systems.'
-      ],
-      technologies: ['Node-RED', 'InfluxDB', 'C', 'IEC60870-5-104', 'Docker', 'WINPP104', 'MongoDB'],
-      features: [
-        'Real-time data acquisition and monitoring',
-        'IEC60870-5-104 protocol implementation',
-        'Integration with power system components',
-        'Data logging and visualization',
-        'Containerized deployment with Docker'
-      ],
-      images: [
-        'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/sgcc1.jpg',
-        'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/sgcc2.jpg'
-      ],
-      links: [
-        { title: 'GitHub Repository', url: 'https://github.com/rakaprsdhkra/sgcc', icon: 'github' },
-        { title: 'View Documentation', url: 'https://drive.google.com/file/d/1I4C9vRYLjv_XWQruDRB3_t4Dkosu85_3/view?usp=sharing', icon: 'demo' }
-      ],
-      github: 'https://github.com/rakaprsdhkra/sgcc',
-      demo: 'https://drive.google.com/file/d/1I4C9vRYLjv_XWQruDRB3_t4Dkosu85_3/view?usp=sharing'
-    },
     'containerized-IEC60870-5-104-server-application-for-smart-grid-cluster-controller': {
       title: 'Containerized IEC60870-5-104 Server Application for Smart Grid Cluster Controller',
       description: 'Containerized IEC60870-5-104 Server Application for Smart Grid Cluster Controller',
