@@ -80,7 +80,7 @@ const Projects = () => {
               mx: 'auto',
             }}
           >
-            A collection of my recent work in web development, AR filters, and smart grid technology.
+            A collection of my recent work.
           </Typography>
         </motion.div>
 
