@@ -40,10 +40,10 @@ const ProjectDetail = () => {
         'Docker-based microservices architecture',
         'Logging and monitoring of IEC 104 messages for debugging and analysis'
       ],
-      images: [
-        'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/ar1.jpg',
-        'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/ar2.jpg'
-      ],
+      // images: [
+      //   'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/ar1.jpg',
+      //   'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/ar2.jpg'
+      // ],
       links: [
         { title: 'Thesis Work', url: 'https://drive.google.com/file/d/1I4C9vRYLjv_XWQruDRB3_t4Dkosu85_3/view?usp=sharing', icon: '' },
         { title: 'View Documentation', url: 'https://drive.google.com/file/d/1St2ZE7_SabTLQmZXis-SZEIsKWoNTtzY/view?usp=sharing', icon: 'demo' }
@@ -152,7 +152,7 @@ const ProjectDetail = () => {
 
         <Grid container spacing={4}>
           {/* Left Column - Project Info */}
-          <Grid item xs={12} md={7}>
+          <Grid item xs={12} md={project?.images ? 7 : 12}>
             <motion.div variants={itemVariants}>
 
               <Typography
@@ -188,7 +188,7 @@ const ProjectDetail = () => {
                     </Button>
                 ))}
               </Box>
-              <Box sx={{ maxWidth: '800px', mx: 'auto', mb: 6 }}>
+              <Box sx={{ maxWidth: project?.images ? '800px' : '100%', mx: 'auto', mb: 6 }}>
                 <Typography
                   variant="body1"
                   sx={{
@@ -273,7 +273,7 @@ const ProjectDetail = () => {
           {/* Right Column - Project Images */}
           <Grid item xs={12} md={5}>
             <motion.div variants={itemVariants}>
-              {project.images.map((image, index) => (
+              {project?.images?.map((image, index) => (
                 <Paper
                   key={index}
                   elevation={4}
