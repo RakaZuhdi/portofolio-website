@@ -73,7 +73,7 @@ const CookieConsent = () => {
                     mb: 0.5,
                   }}
                 >
-                  We use cookies
+                  Please accept my cookie!
                 </Typography>
                 <Typography
                   variant="body2"
