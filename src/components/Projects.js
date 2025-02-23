@@ -12,7 +12,7 @@ const Projects = () => {
 
   const projects = [
     {
-      id: 'smart-grid-controller',
+      id: 'containerized-IEC60870-5-104-server-application-for-smart-grid-cluster-controller',
       title: 'Containerized IEC60870-5-104 Server Application for Smart Grid Cluster Controller',
       description: 'I built a containerized IEC 60870-5-104 server for Smart Grid Cluster Controllers, enabling real-time data exchange with **SCADA systems** using **Node-RED, Docker, and InfluxDB. The system translates JSON objects and ASDUs**, supporting monitoring, automation, and remote control** for smarter grid management.',
       image: 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/random/Screenshot+2025-02-23+at+19.19.14.png',
