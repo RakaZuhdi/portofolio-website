@@ -59,7 +59,8 @@ const ProjectDetail = () => {
         'Implemented responsive layouts and smooth animations using Framer Motion to enhance the user experience. The website features a dark mode theme and optimized performance for fast loading times.',
         'Utilized AWS S3 for reliable and scalable image hosting, ensuring optimal delivery of visual content across all devices and network conditions.'
       ],
-      technologies: ['React', 'Material-UI', 'Framer Motion', 'AWS S3', 'React Router'],
+      technologies: [
+          'React', 'Material-UI', 'Framer Motion', 'AWS S3', 'React Router'],
       features: [
         'Responsive design for all devices',
         'Dark mode support',
@@ -77,6 +78,59 @@ const ProjectDetail = () => {
       ],
       github: 'https://github.com/rakaprsdhkra/portfolio',
       demo: 'https://your-portfolio-url.com'
+    },
+    'dashboard-video-analytic-G20': {
+      title: 'Dashboard Video Analytic G20',
+      description: 'Developed an AI-powered surveillance dashboard to monitor and analyze security footage for the G20 event in Bali.',
+      longDescription: [
+          "My team at Komune Studio using Nodeflux's dataset, we developed an advanced video analytics dashboard to enhance surveillance and security monitoring for the G20 event in Nusa Dua, Bali. The system integrated AI-driven analytics to process real-time video feeds, ensuring efficient security operations.",
+          'In our Computer Vision Surveillance training, we focused on building and deploying AI-driven solutions for face recognition, people counting, vehicle tracking, and license plate recognition. We started by understanding the evolution of AI, from rule-based systems to machine learning and deep learning, and applied this knowledge to real-world surveillance applications. Our team worked extensively with Convolutional Neural Networks (CNNs) and advanced object detection techniques like YOLO and Faster R-CNN to improve accuracy in detecting and identifying faces, vehicles, and crowds in various environments.',
+          'For face recognition, we implemented a pipeline that included face detection, feature extraction, and identification. We trained deep learning models to convert facial features into numerical embeddings, allowing us to verify and identify individuals with high accuracy. We addressed key challenges such as variations in lighting, angles, occlusions, and identical faces, improving our model’s robustness. To optimize performance, we tested our models using benchmarks like Top-1 Accuracy, True Positive Rate (TPR), and False Negative Identification Rate (FNIR). Our latest models achieved 98.9% verification accuracy and were tested on large-scale datasets.',
+          'Beyond facial recognition, we developed people counting and crowd estimation models, which are essential for security and public event management. We designed algorithms capable of detecting individuals in low to high-density crowds, using heatmap visualization and head detection methods. Our models achieved 91% accuracy in surveillance environments and 88% in medium-density settings, with an MAE (Mean Absolute Error) of 15.51 for low-density and 14 for high-density crowds. These solutions are valuable for monitoring foot traffic in public spaces, event security, and emergency response planning.',
+          'In the domain of vehicle tracking, we integrated vehicle detection, classification, and counting to provide structured insights into traffic patterns. Our system was trained to distinguish between cars, buses, trucks, and motorcycles in different environments such as highways, aerial views, and city streets. Our license plate recognition (LPR) system used OCR-based text detection and character recognition to accurately extract plate numbers, even under challenging conditions like low-light, motion blur, and varied camera angles. Our LPR model achieved 89% accuracy with a character error rate (CER) of only 2%, ensuring high reliability in real-world applications.',
+          'To further enhance our AI models, we adopted GAN-based data augmentation to improve facial recognition across diverse demographics and Face Image Quality Assessment (FIQA) to ensure high-quality image inputs. Additionally, we explored hybrid analytics to optimize bandwidth usage and computational costs, making our solutions more scalable. One of our most significant achievements was deploying the AI-powered face recognition system at the G20 Summit in Bali 2022, where our technology played a crucial role in identifying and verifying attendees in real-time, ensuring high security for the event.',
+          'Through this project, we gained valuable hands-on experience in AI-powered surveillance, deep learning model deployment, and real-world security applications. Our work has demonstrated the potential of computer vision in enhancing public safety, optimizing traffic management, and improving law enforcement efficiency, paving the way for future advancements in AI-driven security solutions.'
+      ],
+      links: [
+        { title: 'Video Demo', url: 'https://www.google.com/search?q=g20+command+center&sca_esv=b62d27502791017a&sxsrf=AHTn8zr7QnIx3XHdN1GSZ1uZsD_Dit92yw%3A1740325436208&ei=PEK7Z4e5DJKqseMP1qTliAw&oq=g20+&gs_lp=Egxnd3Mtd2l6LXNlcnAiBGcyMCAqAggAMgQQIxgnMgQQIxgnMgoQABiABBhDGIoFMg4QABiABBiRAhixAxiKBTIKEAAYgAQYQxiKBTIKEAAYgAQYQxiKBTIKEAAYgAQYQxiKBTIKEAAYgAQYQxiKBTIKEAAYgAQYQxiKBTIKEAAYgAQYQxiKBUiTFVC-BlibC3ADeACQAQCYAaABoAGdA6oBAzMuMbgBA8gBAPgBAZgCB6ACzwPCAggQABiwAxjvBcICChAjGIAEGCcYigXCAgsQABiABBiRAhiKBcICEBAAGIAEGLEDGEMYgwEYigXCAg0QABiABBixAxhDGIoFwgITEC4YgAQYsQMY0QMYQxjHARiKBZgDAIgGAZAGBZIHAzUuMqAH7CM&sclient=gws-wiz-serp#fpstate=ive&vld=cid:8f836656,vid:GjiAZLNAGC0,st:0',
+          icon: 'video' },
+      ],
+      images: [
+          'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/G20/Screenshot+2025-02-23+at+23.07.16.png',
+          'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/G20/Screenshot+2025-02-23+at+22.49.09.png',
+          'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/G20/Screenshot+2025-02-23+at+22.49.16.png',
+          'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/G20/Screenshot+2025-02-23+at+22.49.22.png',
+          'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/G20/Screenshot+2025-02-23+at+22.49.28.png',
+          'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/G20/Screenshot+2025-02-23+at+22.49.43.png',
+          'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/G20/Screenshot+2025-02-23+at+22.49.52.png',
+          'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/G20/Screenshot+2025-02-23+at+22.50.00.png',
+          'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/G20/Screenshot+2025-02-23+at+22.50.07.png'
+      ],
+      technologies: ['Python', 'OpenCV', 'YOLO', 'Faster R-CNN', 'TensorFlow', 'PyTorch', 'CNN', 'Deep Learning', 'Machine Learning', 'OCR', 'GAN', 'Face Image Quality Assessment (FIQA)', 'Hybrid Analytics', 'mAP', 'MAE', 'True Positive Rate (TPR)', 'False Negative Identification Rate (FNIR)', 'Object Detection', 'Face Recognition', 'People Counting', 'Crowd Estimation', 'Vehicle Classification', 'License Plate Recognition (LPR)', 'Edge Detection', 'Feature Extraction', 'Neural Networks', 'Image Processing', 'Computer Vision'],
+      features: ['Face Recognition',
+        'Face Detection',
+        'Feature Extraction',
+        '1:1 Face Verification',
+        '1:N Face Identification',
+        'People Counting',
+        'Crowd Estimation',
+        'Vehicle Detection',
+        'Vehicle Classification',
+        'Vehicle Counting',
+        'License Plate Recognition (LPR)',
+        'OCR-based Text Detection',
+        'Real-time Object Detection',
+        'Deep Learning-based Feature Learning',
+        'Heatmap Visualization for Crowd Density',
+        'GAN-based Data Augmentation',
+        'Face Image Quality Assessment (FIQA)',
+        'Hybrid Analytics for Performance Optimization',
+        'Low-light and Angle Tolerant Detection',
+        'Edge Detection and Image Preprocessing',
+        'AI-based Event Security Monitoring',
+        'High-accuracy Model Performance Metrics (mAP, TPR, FNIR)',
+        'Scalability for Large-scale Surveillance']
+
     }
   };
 
@@ -167,7 +221,7 @@ const ProjectDetail = () => {
                 {project.title}
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, mb: 6 }}>
-                {project.links.map((link, index) => (
+                {project?.links?.map((link, index) => (
                     <Button
                         key={index}
                         variant="outlined"
@@ -197,7 +251,7 @@ const ProjectDetail = () => {
                     mb: 4,
                   }}
                 >
-                  {project.longDescription.map((paragraph, index) => (
+                  {project?.longDescription?.map((paragraph, index) => (
                     <Typography
                       key={index}
                       variant="body1"
@@ -225,7 +279,7 @@ const ProjectDetail = () => {
                   Technologies
                 </Typography>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                  {project.technologies.map((tech) => (
+                  {project?.technologies?.map((tech) => (
                     <Chip
                       key={tech}
                       label={tech}
@@ -253,7 +307,7 @@ const ProjectDetail = () => {
                   Key Features
                 </Typography>
                 <Box component="ul" sx={{ color: colors.textSecondary, pl: 2 }}>
-                  {project.features.map((feature) => (
+                  {project?.features?.map((feature) => (
                     <motion.li
                       key={feature}
                       variants={itemVariants}
