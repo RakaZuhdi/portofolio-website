@@ -7,6 +7,8 @@ import Hero from './components/Hero';
 import AboutSimple from "./components/AboutSimple";
 import UnderConstruction from './components/UnderConstruction';
 import CookieConsent from './components/CookieConsent';
+import Projects from "./components/Projects";
+import ProjectDetail from "./components/ProjectDetail";
 
 function App() {
   return (
@@ -19,8 +21,8 @@ function App() {
             <Route path="/" element={<Hero />} />
             <Route path="/home" element={<Hero />} />
             <Route path="/about" element={<AboutSimple />} />
-            {/*<Route path="/projects" element={<Projects />} />*/}
-            {/*<Route path="/projects/:id" element={<ProjectDetail />} />*/}
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:id" element={<ProjectDetail />} />
             {/*<Route path="/album" element={<Album />} />*/}
             {/*<Route path="/hobbies" element={<UnderConstruction />} />*/}
             <Route path="/contact" element={<UnderConstruction />} />
