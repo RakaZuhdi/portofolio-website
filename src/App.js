@@ -4,11 +4,9 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import theme from './theme';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Projects from './components/Projects';
-import ProjectDetail from './components/ProjectDetail';
 import AboutSimple from "./components/AboutSimple";
-import Album from "./components/Album";
 import UnderConstruction from './components/UnderConstruction';
+import CookieConsent from './components/CookieConsent';
 
 function App() {
   return (
@@ -28,6 +26,7 @@ function App() {
             <Route path="/contact" element={<UnderConstruction />} />
             <Route path="*" element={<UnderConstruction />} />
           </Routes>
+          <CookieConsent />
         </div>
       </Router>
     </ThemeProvider>
