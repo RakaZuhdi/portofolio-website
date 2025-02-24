@@ -27,6 +27,14 @@ const Projects = () => {
             technologies: ['Node-RED', 'Docker', 'InfluxDB', 'ArangoDB', 'json-iec104-server', 'lib60870-C', 'C Programming Language', 'Linux', 'WINPP104', 'Visual Studio Code', 'PuTTY'],
             featured: true
         },
+        {
+            id: 'patjarmerah',
+            title: 'Patjarmerah: Homepage, Mobile Apps, and Admin Dashboard Development',
+            description: 'Mobile app and web dashboard development',
+            image: 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Patjar+Merah/Screenshot+2025-02-24+at+12.57.47.png',
+            technologies: ['ReactJS', 'NodeJS', 'React Native', 'MySQL', 'AWS'],
+            featured: true
+        },
     ];
 
     const containerVariants = {

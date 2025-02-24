@@ -131,7 +131,37 @@ const ProjectDetail = () => {
         'High-accuracy Model Performance Metrics (mAP, TPR, FNIR)',
         'Scalability for Large-scale Surveillance']
 
-    }
+    },
+      'patjarmerah': {
+          title: 'Patjarmerah: Homepage, Mobile Apps, and Admin Dashboard Development',
+          longDescription: [
+              'My team at Komune Studio developed a mobile application and website dashboard for Patjarmerah, a literacy festival and book market held across Indonesia. The platform streamlined participant registration and event management, achieving over 10,000 app downloads.'
+          ],
+          images: [
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Patjar+Merah/Screenshot+2025-02-24+at+12.57.47.png',
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Patjar+Merah/Screenshot+2025-02-24+at+12.59.16.png',
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Patjar+Merah/Screenshot+2025-02-24+at+12.58.22.png',
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Patjar+Merah/Screenshot+2025-02-24+at+12.44.09.png',
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Patjar+Merah/Screenshot+2025-02-24+at+12.44.23.png',
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Patjar+Merah/Screenshot+2025-02-24+at+12.43.37.png',
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Patjar+Merah/Screenshot+2025-02-24+at+12.44.38.png',
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Patjar+Merah/Screenshot+2025-02-24+at+12.44.53.png',
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Patjar+Merah/Screenshot+2025-02-24+at+12.45.06.png',
+          ],
+          links: [
+              {
+                  title: 'Website',
+                  url: 'https://patjarmerah.com',
+                  icon: 'video'
+              },{
+                  title: 'Mobile App',
+                  url: 'https://play.google.com/store/apps/details?id=com.patjarmerah&hl=en_AU',
+                  icon: 'video'
+              },
+          ],
+          technologies: ['ReactJS', 'NodeJS', 'React Native', 'MySQL'],
+          features: ['Participant Registration System', 'Event Schedule Management', 'Mobile App for Users', 'Admin Dashboard for Event Management', 'User Authentication and Login', 'Push Notifications', 'Ticketing and QR Code Integration', 'Content Management System (CMS)', 'Multilingual Support', 'Analytics and Reporting']
+      }
   };
 
   const project = projects[id];
