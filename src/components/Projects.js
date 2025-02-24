@@ -63,6 +63,22 @@ const Projects = () => {
             technologies: ['ReactJS', 'NodeJS', 'PostgreSQL', 'AWS', 'Face Recognition', 'People Counting', 'Crowd Estimation'],
             featured: true
         },
+        {
+            id: 'dashboard-and-dispatcher-development-and-maintenance',
+            title: 'Dashboard & Dispatcher Development and Maintenance for the East Java Regional Government',
+            description: 'Created a dashboard and dispatcher system to monitor mask-wearing compliance in Sidoarjo’s markets during the COVID-19 pandemic',
+            image: 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/east-java/thumbnail.png',
+            technologies: ['ReactJS', 'NodeJS', 'PostgreSQL', 'AWS', 'Face Recognition', 'People Counting', 'Crowd Estimation'],
+            featured: true
+        },
+        {
+            id: 'dashboard-and-dispatcher-development-and-maintenance',
+            title: 'WhatsApp Panel Dashboard for Telkom Infomedia',
+            description: 'Designed a dashboard for Telkom Infomedia to track and visualize WhatsApp Business data with integration to Facebook Business API.',
+            image: 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Infomedia/thumbnail.png',
+            technologies: ['ReactJS', 'NodeJS', 'PostgreSQL', 'AWS', 'WhatsAPP API', 'Facebook API'],
+            featured: true
+        },
     ];
 
     const containerVariants = {
