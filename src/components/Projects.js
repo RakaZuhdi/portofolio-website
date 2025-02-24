@@ -92,12 +92,11 @@ const Projects = () => {
                             color: colors.textSecondary,
                             mb: 6,
                             textAlign: 'center',
-                            maxWidth: '600px',
+                            maxWidth: '650px',
                             mx: 'auto',
                         }}
                     >
-                        A collection of my recent work.
-                    </Typography>
+                        A selection of my work. Some project source codes are not publicly available. For inquiries, please contact me at rakazhp@gmail.com                    </Typography>
                 </motion.div>
 
                 <Grid container spacing={4}>
