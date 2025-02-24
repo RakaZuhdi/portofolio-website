@@ -88,7 +88,7 @@ const ProjectDetail = () => {
           'For face recognition, we implemented a pipeline that included face detection, feature extraction, and identification. We trained deep learning models to convert facial features into numerical embeddings, allowing us to verify and identify individuals with high accuracy. We addressed key challenges such as variations in lighting, angles, occlusions, and identical faces, improving our model’s robustness. To optimize performance, we tested our models using benchmarks like Top-1 Accuracy, True Positive Rate (TPR), and False Negative Identification Rate (FNIR). Our latest models achieved 98.9% verification accuracy and were tested on large-scale datasets.',
           'Beyond facial recognition, we developed people counting and crowd estimation models, which are essential for security and public event management. We designed algorithms capable of detecting individuals in low to high-density crowds, using heatmap visualization and head detection methods. Our models achieved 91% accuracy in surveillance environments and 88% in medium-density settings, with an MAE (Mean Absolute Error) of 15.51 for low-density and 14 for high-density crowds. These solutions are valuable for monitoring foot traffic in public spaces, event security, and emergency response planning.',
           'In the domain of vehicle tracking, we integrated vehicle detection, classification, and counting to provide structured insights into traffic patterns. Our system was trained to distinguish between cars, buses, trucks, and motorcycles in different environments such as highways, aerial views, and city streets. Our license plate recognition (LPR) system used OCR-based text detection and character recognition to accurately extract plate numbers, even under challenging conditions like low-light, motion blur, and varied camera angles. Our LPR model achieved 89% accuracy with a character error rate (CER) of only 2%, ensuring high reliability in real-world applications.',
-          'To further enhance our AI models, we adopted GAN-based data augmentation to improve facial recognition across diverse demographics and Face Image Quality Assessment (FIQA) to ensure high-quality image inputs. Additionally, we explored hybrid analytics to optimize bandwidth usage and computational costs, making our solutions more scalable. One of our most significant achievements was deploying the AI-powered face recognition system at the G20 Summit in Bali 2022, where our technology played a crucial role in identifying and verifying attendees in real-time, ensuring high security for the event.',
+          'To further enhance our AI models, we adopted GAN-based data augmentation to improve facial recognition across diverse demographics and Face Image Quality Assessment (FIQA) to ensure high-quality image inputs. Additionally, we explored hybrid analytics to optimize bandwidth usage and computational costs, making our solutions more scalable. One of our most significant achievements was deploying the AI-powered face recognition system at the G20 Summit in Bali 2022, where our technology played a crucial role in identifying and verifying attendees in real-time footage using RTSP from the CCTVs spread around the event area, ensuring high security for the event.',
           'Through this project, we gained valuable hands-on experience in AI-powered surveillance, deep learning model deployment, and real-world security applications. Our work has demonstrated the potential of computer vision in enhancing public safety, optimizing traffic management, and improving law enforcement efficiency, paving the way for future advancements in AI-driven security solutions.'
       ],
       links: [
@@ -106,7 +106,26 @@ const ProjectDetail = () => {
           'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/G20/Screenshot+2025-02-23+at+22.50.00.png',
           'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/G20/Screenshot+2025-02-23+at+22.50.07.png'
       ],
-      technologies: ['Python', 'OpenCV', 'YOLO', 'Faster R-CNN', 'TensorFlow', 'PyTorch', 'CNN', 'Deep Learning', 'Machine Learning', 'OCR', 'GAN', 'Face Image Quality Assessment (FIQA)', 'Hybrid Analytics', 'mAP', 'MAE', 'True Positive Rate (TPR)', 'False Negative Identification Rate (FNIR)', 'Object Detection', 'Face Recognition', 'People Counting', 'Crowd Estimation', 'Vehicle Classification', 'License Plate Recognition (LPR)', 'Edge Detection', 'Feature Extraction', 'Neural Networks', 'Image Processing', 'Computer Vision'],
+      technologies: [
+          "ReactJS",
+          "Node.js",
+          "PostgreSQL",
+          "Python",
+          "OpenCV",
+          "TensorFlow",
+          "PyTorch",
+          "YOLO (You Only Look Once)",
+          "Convolutional Neural Networks (CNN)",
+          "Deep Neural Networks (DNN)",
+          "Scikit-learn",
+          "NumPy",
+          "Pandas",
+          "Matplotlib",
+          "Albumentations (Image Augmentation)",
+          "CUDA & cuDNN (GPU Acceleration)",
+          "Flask/FastAPI (AI Model Deployment)",
+          "Docker (Containerized AI Deployments)"
+      ],
       features: ['Face Recognition',
         'Face Detection',
         'Feature Extraction',
@@ -153,14 +172,41 @@ const ProjectDetail = () => {
                   title: 'Website',
                   url: 'https://patjarmerah.com',
                   icon: 'video'
-              },{
-                  title: 'Mobile App',
-                  url: 'https://play.google.com/store/apps/details?id=com.patjarmerah&hl=en_AU',
-                  icon: 'video'
               },
           ],
           technologies: ['ReactJS', 'NodeJS', 'React Native', 'MySQL'],
           features: ['Participant Registration System', 'Event Schedule Management', 'Mobile App for Users', 'Admin Dashboard for Event Management', 'User Authentication and Login', 'Push Notifications', 'Ticketing and QR Code Integration', 'Content Management System (CMS)', 'Multilingual Support', 'Analytics and Reporting']
+      },
+      'dashboard-surveillance-system-for-beacukai': {
+          title: 'Dirjen Bea Cukai (Customs Directorate General) at Soekarno-Hatta Airport',
+          longDescription: [
+              'My team at Komune Studio designed and implemented a surveillance dashboard at Soekarno-Hatta International Airport. This system helped customs officials monitor and identify arriving passengers and automatically alert the officials for wanted passengers, enhancing border security measures.',
+              'This project used the same AI-powered surveillance system as the one the Dashboard Video Analytic G20. Please open the link to refer to the project.'
+          ],
+          images: [
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Bea+Cukai/Screenshot+2025-02-24+at+19.06.19.png',
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Bea+Cukai/Bea+Cukai/Screenshot+2025-02-24+at+19.19.37.png',
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Bea+Cukai/Bea+Cukai/Screenshot+2025-02-24+at+19.19.37.png',
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Bea+Cukai/Bea+Cukai/Screenshot+2025-02-24+at+19.19.58.png',
+              'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Bea+Cukai/Bea+Cukai/Screenshot+2025-02-24+at+19.20.07.png'
+          ],
+          links: [
+              {
+                  title: 'Dashboard Video Analytic for G20',
+                  url: 'https://portfolio.rakazuhdi.com/projects/dashboard-video-analytic-G20',
+                  icon: 'video'
+              },
+          ],
+          technologies: ['ReactJS', 'NodeJS', 'React Native', 'MySQL'],
+          features:
+              [
+                  "Real-time Surveillance Monitoring",
+                  "Facial Recognition Integration",
+                  "Automated Passenger Screening",
+                  "Alert System for Suspicious Activity",
+                  "Multi-Camera Integration",
+                  "Data Logging and Analytics",
+              ]
       }
   };
 

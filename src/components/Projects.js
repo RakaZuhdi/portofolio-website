@@ -22,9 +22,29 @@ const Projects = () => {
         {
             id: 'dashboard-video-analytic-G20',
             title: 'Dashboard Video Analytic G20',
-            description: 'My first exposure to computer vision tech...',
+            description: 'My first exposure to computer vision tech.',
             image: 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/G20/Screenshot+2025-02-23+at+23.07.16.png',
-            technologies: ['Node-RED', 'Docker', 'InfluxDB', 'ArangoDB', 'json-iec104-server', 'lib60870-C', 'C Programming Language', 'Linux', 'WINPP104', 'Visual Studio Code', 'PuTTY'],
+            // technologies: ['Python', 'OpenCV', 'YOLO', 'Faster R-CNN', 'TensorFlow', 'PyTorch', 'CNN', 'Deep Learning', 'Machine Learning', 'OCR', 'GAN', 'Face Image Quality Assessment (FIQA)', 'Hybrid Analytics', 'mAP', 'MAE', 'True Positive Rate (TPR)', 'False Negative Identification Rate (FNIR)', 'Object Detection', 'Face Recognition', 'People Counting', 'Crowd Estimation', 'Vehicle Classification', 'License Plate Recognition (LPR)', 'Edge Detection', 'Feature Extraction', 'Neural Networks', 'Image Processing', 'Computer Vision'],
+            technologies: [
+                "ReactJS",
+                "Node.js",
+                "PostgreSQL",
+                "Python",
+                "OpenCV",
+                "TensorFlow",
+                "PyTorch",
+                "YOLO (You Only Look Once)",
+                "Convolutional Neural Networks (CNN)",
+                "Deep Neural Networks (DNN)",
+                "Scikit-learn",
+                "NumPy",
+                "Pandas",
+                "Matplotlib",
+                "Albumentations (Image Augmentation)",
+                "CUDA & cuDNN (GPU Acceleration)",
+                "Flask/FastAPI (AI Model Deployment)",
+                "Docker (Containerized AI Deployments)"
+            ],
             featured: true
         },
         {
@@ -32,7 +52,15 @@ const Projects = () => {
             title: 'Patjarmerah: Homepage, Mobile Apps, and Admin Dashboard Development',
             description: 'Mobile app and web dashboard development',
             image: 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Patjar+Merah/Screenshot+2025-02-24+at+12.57.47.png',
-            technologies: ['ReactJS', 'NodeJS', 'React Native', 'MySQL', 'AWS'],
+            technologies: ['ReactJS', 'NodeJS', 'React Native', 'MySQL', 'AWS', 'Face Recognition'],
+            featured: true
+        },
+        {
+            id: 'dashboard-surveillance-system-for-beacukai',
+            title: 'Dirjen Bea Cukai (Customs Directorate General) at Soekarno-Hatta Airport',
+            description: 'Dashboard surveillance system built for Dirjen Bea Cukai (Customs Directorate General) at Soekarno-Hatta Airport.',
+            image: 'https://portfolio-raka.s3.ap-southeast-2.amazonaws.com/projects/Bea+Cukai/Screenshot+2025-02-24+at+19.06.19.png',
+            technologies: ['ReactJS', 'NodeJS', 'PostgreSQL', 'AWS', 'Face Recognition', 'People Counting', 'Crowd Estimation'],
             featured: true
         },
     ];
@@ -98,7 +126,6 @@ const Projects = () => {
                     >
                         A selection of my work. Some project source codes are not publicly available. For inquiries, please contact me at rakazhp@gmail.com                    </Typography>
                 </motion.div>
-
                 <Grid container spacing={4}>
                     {projects.map((project) => (
                         <Grid item xs={12} md={6} lg={4} key={project.id}>
